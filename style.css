@@ -52,6 +52,7 @@ nav ul
     margin: 0;
     padding: 0;
     overflow: hidden;
+    border-bottom: 1px solid #bbb; 
     background-color: white;
     width: 100%;
     top:0;
@@ -64,7 +65,7 @@ nav ul li
 nav ul li a
 {
     font-size: 23px;
-    padding: 10px;
+    padding: 6px;
     color: black;
     text-decoration: none;
 }
@@ -81,7 +82,7 @@ nav ul li a:hover {
 #home
 {
     text-transform: uppercase;
-    font-size: 28px;
+    font-size: 30px;
     border-right: 1px solid #bbb;
     padding-right: 10px;
 }
@@ -89,7 +90,6 @@ nav ul li a:hover {
 {
     width:100%;
     padding: 0;
-    padding-top: 40px;
     overflow: hidden;
 }
 .sticky ul
