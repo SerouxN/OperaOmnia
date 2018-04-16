@@ -287,7 +287,10 @@ p
     font-family: 'Raleway', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     text-align:center;
+    padding: 15px;
     font-size: 50px;
+    margin: 0;
+    background-color: white;
 }
 #titleDiv
 {
