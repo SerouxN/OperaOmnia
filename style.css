@@ -121,22 +121,23 @@ nav ul li a:hover {
 footer
 {
     position: static;
-    background-color: #bbb;
+    background-color: rgb(223, 223, 223);
     text-align: center;
     height: 45px;
     font-size: 12px;
+    margin:0;
     bottom:0;
     width: 100%;
-    border-top: 1px solid gray;
-    padding-bottom: 10px;
-    padding-top: 15px;
+    border-top: 1px solid rgb(124, 124, 124);
+    padding-bottom: 13px;
+    padding-top: 10px;
 }
 footer p
 {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding:10px;
     color: rgb(124, 124, 124);
+    font-style: italic;
 }
 form
 {
@@ -169,65 +170,66 @@ p
 {
     text-align: justify;
 }
-.sticky + .content {
+.sticky + .content 
+{
     padding-top: 60px;
-  }
-  .content 
-  {
+}
+.content 
+{
     padding: 16px;
-  }
-  #nameAuthor
-  {
-      font-size: 45px;
-      font-weight:bold;
-  }
-  #core
-  {
-      padding:10px;
-  }
-  #paperList a
-  {
-      text-decoration: none;
-      color:black;
-      font-size: 18px;
-  }
+}
+#nameAuthor
+{
+    font-size: 45px;
+    font-weight:bold;
+}
+#core
+{
+    padding:10px;
+}
+#paperList a
+{
+    text-decoration: none;
+    color:black;
+    font-size: 18px;
+}
 .home
 {
     background-image: url(background.jpg);
     background-repeat: no-repeat;
     background-size:100%; 
-    }
+}
 
-    .homeBox
-    {
-        color: white;
-        border: 1px solid white;
-        width: 25%;
-        margin-left: 55px;
-        margin-top: 10%;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    #menuSubject
-    {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin-left: 20px;
-        width: 50%;
-    }
-    .subjectPhysics
-    {
-        background-color: #328CD1;
-        height: auto;
-        padding: 15px;
-    }
-    .subjectsPapers
-    {
-        background-color: #94C4E9;
-        margin-bottom: px;
-    }
-    .subjectsPapers ul
-    {
-        margin-bottom: 10px;
-    }
+.homeBox
+{
+    color: white;
+    border: 1px solid white;
+    width: 25%;
+    margin-left: 55px;
+    margin-top: 10%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#menuSubject
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 50%;
+}
+.subjectPhysics
+{
+    background-color: #328CD1;
+    height: auto;
+    padding: 15px;
+}
+.subjectsPapers
+{
+    background-color: #94C4E9;
+    margin-bottom: px;
+}
+.subjectsPapers ul
+{
+    margin-bottom: 10px;
+}
