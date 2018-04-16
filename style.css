@@ -123,12 +123,11 @@ footer
     position: static;
     background-color: rgb(223, 223, 223);
     text-align: center;
-    height: 45px;
     font-size: 12px;
     margin:0;
     bottom:0;
     width: 100%;
-    border-top: 1px solid rgb(124, 124, 124);
+    border-top: 1px solid rgb(145, 145, 145);
     padding-bottom: 13px;
     padding-top: 10px;
 }
@@ -232,4 +231,23 @@ p
 .subjectsPapers ul
 {
     margin-bottom: 10px;
+}
+#sources
+{
+    text-align: center;
+}
+#sources ul
+{
+    list-style-type: none;
+}
+#sources ul li
+{
+    display:inline;
+}
+#sources ul img
+{
+    height: 30px;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
