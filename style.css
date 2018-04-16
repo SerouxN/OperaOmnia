@@ -191,3 +191,43 @@ p
       color:black;
       font-size: 18px;
   }
+  .home
+  {
+    background-image: url(backround.jpg);
+    background-repeat: no-repeat;
+    background-size:100%; 
+    }
+
+    .homeBox
+    {
+        color: white;
+        border: 1px solid white;
+        width: 25%;
+        margin-left: 55px;
+        margin-top: 10%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #menuSubject
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 20px;
+        width: 50%;
+    }
+    .subjectPhysics
+    {
+        background-color: #328CD1;
+        height: auto;
+        padding: 15px;
+    }
+    .subjectsPapers
+    {
+        background-color: #94C4E9;
+        margin-bottom: px;
+    }
+    .subjectsPapers ul
+    {
+        margin-bottom: 10px;
+    }
