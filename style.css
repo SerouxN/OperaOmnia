@@ -213,7 +213,7 @@ p
     padding-left: 15px;
     padding-right: 15px;
 }
-#menuSubject
+.menuSubject
 {
     display: flex;
     justify-content: center;
@@ -221,18 +221,28 @@ p
     margin-left: 20px;
     width: 50%;
     border-radius: 5px;
+    margin-bottom: 20px;
+    padding-right: 4px;
 }
 .subjectPhysics
 {
     background-color: #328CD1;
-    height: auto;
     padding: 15px;
 }
-.subjectsPapers
+.subjectsPapersPhysics
 {
-    background-color: #94C4E9;
-    margin-bottom: px;
+    background-color: #81DAF5;
 }
+.subjectMaths
+{
+    background-color: #ed0b0b;
+    padding: 15px;
+}
+.subjectPapersMaths
+{
+    background-color: #ee8f8f;
+}
+
 .subjectsPapers ul
 {
     margin-bottom: 10px;

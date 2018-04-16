@@ -8,7 +8,7 @@
     <?php include("header.php"); ?>
     <section>
     <h1>Subjects</h1>
-    <div id="menuSubject">
+    <div  class="menuSubject">
     	<div class = "subjectPhysics"><strong>Physics</strong></div>
     	<?php 
     	try {
@@ -18,15 +18,27 @@
         {
            die('Erreur : '.$e->getMessage());
         }
-        $reponse = 
-        $reponse = $bdd->query('SELECT Title,ID FROM papers');
+        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Physics\'');
+        echo '<div class = "subjectsPapersPhysics" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<div class = "subjectsPapers"><ul> <li> <a href='.$data['ID'].'>'.$data['Title'].'</li> </ul></div>');
+    	echo ('<ul> <li> <a href=papers/'.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
         }
+        echo '</div>'
+        ?>
+     </div>
+     <div class="menuSubject">
+        <div class = "subjectMaths"><strong>Mathematics</strong></div>
+        <?php        
+        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Mathematics\'');
+        echo '<div class = "subjectPapersMaths" style="overflow-y:auto; max-height: 200px;">';
+        while ($data = $reponse->fetch())
+        {
+    	echo ('<ul> <li> <a href=papers/'.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+        }
+        echo '</div>'
         ?>
     </section>
-    </div>
 
 <?php include("footer.php"); ?>
 </body>
