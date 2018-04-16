@@ -191,9 +191,9 @@ p
       color:black;
       font-size: 18px;
   }
-  .home
-  {
-    background-image: url(backround.jpg);
+.home
+{
+    background-image: url(background.jpg);
     background-repeat: no-repeat;
     background-size:100%; 
     }
