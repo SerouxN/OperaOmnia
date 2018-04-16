@@ -24,6 +24,7 @@
         {
     	echo ('<div class = "subjectsPapers"><ul> <li> <a href='.$data['ID'].'>'.$data['Title'].'</li> </ul></div>');
         }
+        echo ("Pourri");
         ?>
     </section>
     </div>
