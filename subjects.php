@@ -38,6 +38,20 @@
         }
         echo '</div>'
         ?>
+    </div>
+     <div class="menuSubject">
+        <div class = "subjectComputerScience"><strong>Computer Science</strong></div>
+        <?php        
+        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'ComSience\'');
+        echo '<div class = "subjectsPapersComSci" style="overflow-y:auto; max-height: 200px;">';
+        while ($data = $reponse->fetch())
+        {
+    	echo ('<ul> <li> <a href=papers/'.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+        }
+        echo ('<em> Nothing here ... Come later dude</em>');
+        echo '</div>'
+        ?>
+    </div>           
     </section>
 
 <?php include("footer.php"); ?>
