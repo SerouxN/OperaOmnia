@@ -18,11 +18,11 @@
         {
            die('Erreur : '.$e->getMessage());
         }
-        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Physics\'');
+        $reponse = $bdd->query('SELECT Title,IDPaper FROM papers WHERE Field = \'Physics\'');
         echo '<div class = "subjectsPapersPhysics" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	echo ('<ul> <li> <a href=paper.php?id='.$data['IDPaper'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo '</div>'
         ?>
@@ -30,11 +30,11 @@
      <div class="menuSubject">
         <div class = "subjectMaths"><strong>Mathematics</strong></div>
         <?php        
-        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Mathematics\'');
+        $reponse = $bdd->query('SELECT Title,IDPaper FROM papers WHERE Field = \'Mathematics\'');
         echo '<div class = "subjectPapersMaths" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	echo ('<ul> <li> <a href=paper.php?id='.$data['IDPaper'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo '</div>'
         ?>
@@ -42,11 +42,11 @@
      <div class="menuSubject">
         <div class = "subjectComputerScience"><strong>Computer Science</strong></div>
         <?php        
-        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Computer Sience\'');
+        $reponse = $bdd->query('SELECT Title,IDPaper FROM papers WHERE Field = \'Computer Sience\'');
         echo '<div class = "subjectsPapersComSci" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	echo ('<ul> <li> <a href=paper.php?id='.$data['IDPaper'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo ('<em> Nothing here ... Come later dude</em>');
         echo '</div>'

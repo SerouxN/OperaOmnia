@@ -51,7 +51,7 @@
             {
                     die('Erreur : '.$e->getMessage());
             }
-            $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND Major=1 ORDER BY Year, ID');
+            $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND Major=1 ORDER BY Year, IDPaper');
             $num_rows=$reponse->fetchColumn();
             if ($num_rows > 0)
             {?>
@@ -62,7 +62,7 @@
             while ($data = $reponse->fetch())
             {
         ?>
-        <li><a href="paper.php?id=<?php echo $data['ID'];?>"><?php echo $data['Title']?></a></li>
+        <li><a href="paper.php?id=<?php echo $data['IDPaper'];?>"><?php echo $data['Title']?></a></li>
         <?php
             }}
             $reponse->closeCursor();
@@ -83,11 +83,11 @@
             {
                     die('Erreur : '.$e->getMessage());
             }
-            $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' ORDER BY Year, ID');
+            $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' ORDER BY Year, IDPaper');
             while ($data = $reponse->fetch())
             {
         ?>
-        <li><a href="paper.php?id=<?php echo $data['ID'];?>"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</a></li>
+        <li><a href="paper.php?id=<?php echo $data['IDPaper'];?>"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</a></li>
         <?php
             }
             $reponse->closeCursor();
