@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php include("header.php"); ?>
-    
+    <section>
     <h1>Subjects</h1>
     <div id="menuSubject">
     	<div class = "subjectPhysics"><strong>Physics</strong></div>
@@ -25,7 +25,7 @@
     	echo ('<div class = "subjectsPapers"><ul> <li> <a href='.$data['ID'].'>'.$data['Title'].'</li> </ul></div>');
         }
         ?>
-
+    </section>
     </div>
 
 <?php include("footer.php"); ?>
