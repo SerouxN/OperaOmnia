@@ -3,7 +3,7 @@
         <ul style="list-style-type:none">
             <li><a href="operaomnia.php" id="home">Home</a></li>
             <li><a href="subjects.php">Subjects</a></li>
-            <li><a href="authors.php?sorting=Name&order=+#">Authors</a></li>
+            <li><a href="authors.php">Authors</a></li>
             <li><a href="papers.php">Papers</a></li>
             <li><a href="submit.php" id="submit">Submit a Paper</a></li>
         </ul>
