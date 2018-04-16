@@ -220,6 +220,7 @@ p
     flex-direction: column;
     margin-left: 20px;
     width: 50%;
+    border-radius: 5px;
 }
 .subjectPhysics
 {
