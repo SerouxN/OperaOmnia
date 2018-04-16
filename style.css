@@ -243,7 +243,15 @@ p
 {
     background-color: #ee8f8f;
 }
-
+.subjectComputerScience
+{
+    background-color: #EDFE01;
+    padding: 15px;
+}
+.subjectsPapersComSci
+{
+    background-color: #E3ED62;
+}
 .subjectsPapers ul
 {
     margin-bottom: 10px;
