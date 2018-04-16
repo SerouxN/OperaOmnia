@@ -294,3 +294,49 @@ p
 {
     border-bottom: 1px solid #bbb;
 }
+#authList 
+{
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    margin-top:65px;
+    border-radius: 30px;
+}
+
+#authList th, td 
+{
+    text-align: left;
+    padding: 6px;
+    border: 1px solid rgb(226, 226, 226);
+}
+#authList tr:nth-child(even)
+{
+    background-color: #f3f3f3
+}
+#authList tr:nth-child(odd)
+{
+    background-color: #f7f7f7
+}
+#authList th 
+{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(0, 121, 158);
+    border: 1px solid rgb(0, 100, 131);
+    color: white;
+}
+#authName
+{
+    font-size: 17px;
+}
+#goLink
+{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+#bio
+{
+    font-size: 12px;
+}

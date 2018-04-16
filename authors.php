@@ -25,7 +25,14 @@
             <input id="submitButton" type="submit" value="Submit">
         </fieldset>
     </form>
-    <ul>
+    <table id="authList">
+    <tr>
+        <th>Name</th>
+        <th>Years</th>
+        <th>Bio</th>
+        <th>Field</th>
+        <th>Link</th>
+        </tr>
     <?php
         $chosenMethod='Name';
         $order = " ";
@@ -52,13 +59,19 @@
         while ($data = $reponse->fetch())
         {
     ?>
-        <li><a href="author.php?authid=<?php echo $data['ID']?>"><p><?php echo $data['FirstName'] ." ". $data['Name']; ?></p></a></li><!--
-         -->
+        <tr>
+        <td id="authName"><?php echo $data['FirstName']?> <strong><?php echo $data['Name']; ?></strong></td>
+        <td>(<?php echo date_format(date_create($data['Birthday']),"Y");?>-<?php echo date_format(date_create($data['DateOfDeath']),"Y"); ?>)</td>
+        <td id="bio"><?php echo substr($data['Bio'], 0, 100)?>...</td>
+        <td><?php echo $data['Field']?></td>
+        <td><a id="goLink" href="author.php?authid=<?php echo $data['ID']?>"><p>Go</p></a></td>
+        </tr>
     <?php
+
         }
         $reponse->closeCursor();
     ?>
-    </ul>
+    </table>
     </section>
 <?php include("footer.php"); ?>
 </body>
