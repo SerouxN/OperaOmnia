@@ -1,2 +1,2 @@
 # Opera-Omnia
-An small index for great scientific papers !
+A small index for great scientific papers !
