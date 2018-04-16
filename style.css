@@ -1,0 +1,194 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body
+{
+    font-family: 'Raleway', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin:0;
+}
+section
+{
+    display: block;
+    padding: 10px;
+}
+aside
+{
+    display: block;
+    float: right;
+    width: 26%;
+    margin:10px;
+    padding:5px;
+    padding-left:8px;
+    margin-left: 30px;
+    color: white;
+    border-radius: 8px;
+}
+#asideMaths
+{
+    background-color: #aa2525;
+}
+#asidePhys
+{
+    background-color: #1c99b4;
+}
+
+aside a
+{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+aside a:hover
+{
+    color: white;
+    text-decoration: underline;
+}
+nav ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    width: 100%;
+    top:0;
+    font-weight: bold;
+}
+nav ul li 
+{
+    display: inline;
+}
+nav ul li a
+{
+    font-size: 23px;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    background-color: #efefef;
+}
+#submit
+{
+    float: right;
+    border-left: 1px solid #bbb;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+#home
+{
+    text-transform: uppercase;
+    font-size: 28px;
+    border-right: 1px solid #bbb;
+    padding-right: 10px;
+}
+#banner
+{
+    width:100%;
+    padding: 0;
+    padding-top: 40px;
+    overflow: hidden;
+}
+.sticky ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    width: 100%;
+    border-bottom: 1px solid #bbb; 
+}
+.sticky ul li 
+{
+    display: inline;
+}
+.sticky ul li a
+{
+    font-size: 23px;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+}
+.sticky ul li a:hover {
+    background-color: #efefef;
+}
+.sticky 
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+footer
+{
+    position: static;
+    background-color: #bbb;
+    text-align: center;
+    height: 45px;
+    font-size: 12px;
+    bottom:0;
+    width: 100%;
+    border-top: 1px solid gray;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+footer p
+{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding:10px;
+    color: rgb(124, 124, 124);
+}
+form
+{
+    width:40%;
+}
+#submitButton
+{
+    background-color: #e6e6e6;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-size: 15px;
+    margin:5px;
+    height:30px;
+    text-align: center;
+    cursor: pointer;
+}
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+#order
+{
+    padding:25px;
+    display: inline-block;
+}
+p
+{
+    text-align: justify;
+}
+.sticky + .content {
+    padding-top: 60px;
+  }
+  .content 
+  {
+    padding: 16px;
+  }
+  #nameAuthor
+  {
+      font-size: 45px;
+      font-weight:bold;
+  }
+  #core
+  {
+      padding:10px;
+  }
+  #paperList a
+  {
+      text-decoration: none;
+      color:black;
+      font-size: 18px;
+  }
