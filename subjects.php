@@ -22,7 +22,7 @@
         echo '<div class = "subjectsPapersPhysics" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=papers/'.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo '</div>'
         ?>
@@ -34,7 +34,7 @@
         echo '<div class = "subjectPapersMaths" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=papers/'.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo '</div>'
         ?>
@@ -46,7 +46,7 @@
         echo '<div class = "subjectsPapersComSci" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=papers/'.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo ('<em> Nothing here ... Come later dude</em>');
         echo '</div>'
