@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
 
 body
 {
@@ -262,4 +263,16 @@ p
 #placeholder
 {
     height:auto;
+}
+#bigTitle
+{
+    width:100%;
+    font-family: 'Raleway', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    font-size: 50px;
+}
+#titleDiv
+{
+    border-bottom: 1px solid #bbb;
 }
