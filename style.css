@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 
 body
 {
@@ -136,7 +137,8 @@ footer p
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(124, 124, 124);
-    font-style: italic;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
 }
 form
 {
@@ -235,13 +237,16 @@ p
 #sources
 {
     text-align: center;
+    margin: 0 auto;
 }
 #sources ul
 {
+    text-align: center;
     list-style-type: none;
 }
 #sources ul li
 {
+    text-align: center;
     display:inline;
 }
 #sources ul img
