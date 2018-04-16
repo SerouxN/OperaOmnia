@@ -15,8 +15,8 @@
         while ($data = $reponse->fetch())
         {
             $bio=$data['Bio'];
-            $name=$data['FirstName'] . " ". $data['Name'];
-            $familyName=$data['Name'];
+            $name=$data['FirstName'] . " ". $data['LastName'];
+            $familyName=$data['LastName'];
             if ($data['Field']=='Physics')
             {
                 $asideColor="asidePhys";

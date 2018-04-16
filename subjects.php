@@ -42,7 +42,7 @@
      <div class="menuSubject">
         <div class = "subjectComputerScience"><strong>Computer Science</strong></div>
         <?php        
-        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'ComSience\'');
+        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Computer Sience\'');
         echo '<div class = "subjectsPapersComSci" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
