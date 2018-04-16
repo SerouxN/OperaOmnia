@@ -89,7 +89,6 @@
         ?>
         <li><a href="paper.php?id=<?php echo $data['ID'];?>"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</a></li>
         <?php
-            echo "lyugesuykgiusekyguyg";
             }
             $reponse->closeCursor();
         ?>
