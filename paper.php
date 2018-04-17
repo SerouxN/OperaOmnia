@@ -2,6 +2,9 @@
 <html>
 <head> 
     <?php
+        foreach (glob("papers/". $_GET['id']."_*") as $filename) {
+            echo "$filename size " . filesize($filename) . "\n";
+        }
         try
         {
             $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
