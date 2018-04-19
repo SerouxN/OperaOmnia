@@ -351,3 +351,12 @@ p
 {
     margin: 60 auto;
 }
+#paperTitle
+{
+    font-size: 22px;
+}
+#version
+{
+    font-size: 13px;
+    text-align: center;
+}

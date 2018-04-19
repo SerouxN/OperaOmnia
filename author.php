@@ -34,6 +34,7 @@
     ?>
     <title>Opera Omnia - <?php echo $familyName?></title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8"/>
 </head>
 <body>
     <?php include("headerAuthor.php"); ?>

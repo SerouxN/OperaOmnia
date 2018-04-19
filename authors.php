@@ -3,6 +3,7 @@
 <head>
     <title>Opera Omnia - Authors</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8"/>
 </head>
 <body> 
     <?php include("header.php"); 
@@ -18,9 +19,9 @@
         <input type="text" name="name" id="name"/>
         <div id="selectField">
             <p>Only show:</p>
-            <input type="checkbox" name="order" value="Physics" <?php if(isset($_POST['order']) && $_POST['order'] == "Physics"){echo 'checked';}?> checked>Physicists<br>
-            <input type="checkbox" name="order" value="Mathematics" <?php if(isset($_POST['order']) && $_POST['order'] == "Mathematics"){echo 'checked';}?>>Mathematicians<br>
-            <input type="checkbox" name="order" value="Computer Science" <?php if(isset($_POST['order']) && $_POST['order'] == "Computer Science"){echo 'checked';}?>>Computer Scientists<br>
+            <input type="checkbox" name="Physics" value="Physics" <?php if(isset($_POST['order']) && $_POST['order'] == "Physics"){echo 'checked';}?>>Physicists<br>
+            <input type="checkbox" name="Mathematics" value="Mathematics" <?php if(isset($_POST['order']) && $_POST['order'] == "Mathematics"){echo 'checked';}?>>Mathematicians<br>
+            <input type="checkbox" name="Computer Science" value="Computer Science" <?php if(isset($_POST['order']) && $_POST['order'] == "Computer Science"){echo 'checked';}?>>Computer Scientists<br>
         </div>
         </fieldset>
         <fieldset>
@@ -66,6 +67,25 @@
             {
                     die('Erreur : '.$e->getMessage());
             }
+            $query="SELECT * FROM authors";
+            if(isset($_POST['Physics']) or isset($_POST['Mathematics']) or isset($_POST['Computer Science']) or isset($_POST['name']))
+            {
+                $query.=" WHERE ";
+                if (isset($_POST['name']))
+                {
+                    $query.="LastName LIKE '%".strtoupper($_POST['name'])."%'";
+                }
+                else if(isset($_POST['Physics']) or isset($_POST['Mathematics']) or isset($_POST['Computer Science']))
+                {
+                    $query.="";
+                }
+                if(isset($_POST['Physics']) or isset($_POST['Mathematics']) or isset($_POST['Computer Science']) and isset($_POST['name']))
+                {
+                    echo "Hello";
+                    $query.="LastName LIKE '%".strtoupper($_POST['name'])."%'";
+                }
+            }
+            echo $query;
             if (isset($_POST['order']))
             {
                 $order = $_POST['order'];
@@ -79,7 +99,7 @@
             {
                 $reponse = $bdd->query("SELECT * FROM authors ORDER BY " . $chosenMethod ." ". $order);
             }
-            
+            $reponse = $bdd->query("SELECT * FROM authors ORDER BY " . $chosenMethod ." ". $order);
             $nResults=0;
             while ($data = $reponse->fetch())
             {
@@ -107,6 +127,6 @@
         </table>
     </div>
     </section>
-<?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
 </body>
 </html>

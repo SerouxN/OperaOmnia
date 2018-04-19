@@ -3,6 +3,7 @@
 <head>
     <title>Opera Omnia - Subjects</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8"/>
 </head>
 <body>
     <?php include("header.php"); ?>
