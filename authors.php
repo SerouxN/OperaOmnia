@@ -27,10 +27,11 @@
                 <fieldset>
                     <legend>Sort by:</legend>
                     <select name="sorting" size="1">
-                        <option value="LastName" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'LastName') {echo 'selected';} ?>>Last Name
-                        <option value="FirstName" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'FirstName') {echo 'selected';} ?>>First Name 
-                        <option value="Birthday" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Birthday') {echo 'selected';} ?>>Birth Date
-                        <option value="DateOfDeath" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'DateOfDeath') {echo 'selected';} ?>>Death Date
+                        <option value="LastName" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'LastName') {echo 'selected';} ?>>Last Name</option>
+                        <option value="FirstName" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'FirstName') {echo 'selected';} ?>>First Name </option>
+                        <option value="Birthday" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Birthday') {echo 'selected';} ?>>Birth Date</option>
+                        <option value="DateOfDeath" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'DateOfDeath') {echo 'selected';} ?>>Death Date</option>
+                        <option value="Field" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Field') {echo 'selected';} ?>>Field</option>
                     </select>
                     <div id="order">
                         <input type="radio" name="order" value=" " <?php if(isset($_POST['order']) && $_POST['order'] == " "){echo 'checked';}?> checked>Ascending<br>
@@ -138,7 +139,7 @@
                 {
                     ?>
                         <tr>
-                <td id="noResult" colspan="5">There were no results for the name"<?php echo $_POST['name']?>". You could check the spelling, or try this name in other fields.</td>
+                <td id="noResult" colspan="5">There were no results for the name "<?php echo $_POST['name']?>". You could check the spelling, or try this name in other fields.</td>
                 </tr>
                     <?php
                 }
