@@ -1,7 +1,7 @@
 <header>
-<div id="titleDiv">
-<h1 id="bigTitle">OPERA OMNIA</h1>
-</div>
+    <div id="titleDiv">
+        <h1 id="bigTitle">OPERA OMNIA</h1>
+    </div>
     <nav id="navbar">
         <ul style="list-style-type:none">
             <li><a href="operaomnia.php" id="home">Home</a></li>

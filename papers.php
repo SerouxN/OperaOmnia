@@ -11,6 +11,6 @@
         <h1>Papers</h1>
         <p>Welcome to Opera Omnia. That's it.</p>
     </section>
-<?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
 </body>
 </html>

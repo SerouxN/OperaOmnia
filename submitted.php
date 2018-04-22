@@ -8,12 +8,12 @@
 <header>
 	<?php include("header.php"); ?>
 </header>
-<body class ="home">
-	<div class = "homeBox">
-		<h1>Opera Omnia</h1>
-		<p>Welcome to Opera Omnia. An index for all the scientific papers.</p>
-	</div>
+<body>
+	<section>
+		<h1>Thank you for submitting a paper</h1>
+		<p>You can now go back <a href="operaomnia.php">home</a>. Or whatever, you do you...</p>
+	</section>
 	<div id="space"></div>
-	<?php //include("footer.php"); ?>
+	<?php include("footer.php"); ?>
 </body>
 </html>

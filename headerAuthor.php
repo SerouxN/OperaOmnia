@@ -1,20 +1,25 @@
 <header>
-<div id="titleDiv">
-<h1 id="bigTitle">OPERA OMNIA</h1>
-</div>
-    <nav id="navbar">
-        <ul style="list-style-type:none">
-            <li><a href="operaomnia.php" id="home">Home</a></li>
-            <li><a href="subjects.php">Subjects</a></li>
-            <li><a href="authors.php">Authors</a></li>
-            <li><a href="papers.php">Papers</a></li>
-            <li><a href="submit.php" id="submit">Submit a Paper</a></li>
-        </ul>
-    </nav>
-    <div>
-    <img id="banner" src="banners/<?php echo $_GET['authid']?>.png" onerror="if (this.src != 'banners/default.png') this.src = 'banners/default.png';">
-   
+    <div id="titleDiv">
+        <h1 id="bigTitle">OPERA OMNIA</h1>
     </div>
+        <nav id="navbar">
+            <ul style="list-style-type:none">
+                <li><a href="operaomnia.php" id="home">Home</a></li>
+                <li><a href="subjects.php">Subjects</a></li>
+                <li><a href="authors.php">Authors</a></li>
+                <li><a href="papers.php">Papers</a></li>
+                <li><a href="submit.php" id="submit">Submit a Paper</a></li>
+            </ul>
+        </nav>
+    <?php
+    if (file_exists("banners/". $_GET['authid'].".png")) {?>
+        <img id="banner" src="banners/<?php echo $_GET['authid']?>.png" />
+    <?php
+    }
+    else {?>
+        <img id="banner" src="banners/banner.php" />
+    <?php
+    }?>
     <script>
         window.onscroll = function() {myFunction()};
 
