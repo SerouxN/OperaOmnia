@@ -3,7 +3,6 @@
 <head>
     <title>Opera Omnia - Subjects</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8"/>
 </head>
 <body>
     <?php include("header.php"); ?>
@@ -23,7 +22,7 @@
         echo '<div class = "subjectsPapersPhysics" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+    	    echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo '</div>'
         ?>
@@ -43,11 +42,11 @@
      <div class="menuSubject">
         <div class = "subjectComputerScience"><strong>Computer Science</strong></div>
         <?php        
-        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Computer Sience\'');
+        $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Computer Science\'');
         echo '<div class = "subjectsPapersComSci" style="overflow-y:auto; max-height: 200px;">';
         while ($data = $reponse->fetch())
         {
-    	echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+            echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
         }
         echo ('<em> Nothing here ... Come later dude</em>');
         echo '</div>'

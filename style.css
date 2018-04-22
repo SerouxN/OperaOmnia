@@ -360,3 +360,25 @@ p
     font-size: 13px;
     text-align: center;
 }
+.submitPaper
+{
+    padding-right: 500px;
+    
+}
+
+.submitPaper *
+{
+    margin-top: 5px;
+}
+.submitPaperButton
+{
+    background-color: #e6e6e6;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-size: 18px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 10px;
+}
