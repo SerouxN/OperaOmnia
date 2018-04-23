@@ -122,6 +122,39 @@ nav ul li a:hover {
     top: 0;
     width: 100%;
 }
+#bigTitle
+{
+    width:100%;
+    font-family: 'Raleway', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    padding: 0px;
+    font-size: 50px;
+    margin: 0;
+    background-color: white;
+}
+#titleDiv
+{
+    border-bottom: 1px solid #bbb;
+}
+@media screen and (max-width: 610px)
+{
+
+    nav ul li 
+    {
+        display: none;
+    }
+    .sticky ul 
+    {
+        display: none;
+    }
+    #bigTitle
+    {
+        font-size: 25px;
+    }
+}
+
+
 footer
 {
     position: static;
@@ -219,11 +252,34 @@ p
     justify-content: center;
     flex-direction: column;
     margin-left: 20px;
-    width: 50%;
+    width: 600px;
     border-radius: 5px;
     margin-bottom: 20px;
     padding-right: 4px;
 }
+@media screen and (max-width: 610px)
+{
+
+    .menuSubject
+    {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 1px;
+    }
+    .subjectsPapersPhysics ul li a 
+    {
+        font-size: 0.8em;
+    }
+    .subjectPapersMaths ul li a 
+    {
+        font-size: 0.8em;
+    }
+    .subjectsPapersComSci ul li a 
+    {
+        font-size: 0.8em;
+    }
+}
+
 .subjectPhysics
 {
     background-color: #328CD1;
@@ -281,21 +337,7 @@ p
 {
     height:auto;
 }
-#bigTitle
-{
-    width:100%;
-    font-family: 'Raleway', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
-    text-align:center;
-    padding: 15px;
-    font-size: 50px;
-    margin: 0;
-    background-color: white;
-}
-#titleDiv
-{
-    border-bottom: 1px solid #bbb;
-}
+
 #authList 
 {
     border-collapse: collapse;
@@ -362,14 +404,10 @@ p
 }
 .submitPaper
 {
-    padding-right: 500px;
-    
+    width: auto;
+    margin: 0px;
 }
 
-.submitPaper *
-{
-    margin-top: 5px;
-}
 .submitPaperButton
 {
     background-color: #e6e6e6;
@@ -381,4 +419,8 @@ p
     text-align: center;
     cursor: pointer;
     margin-left: 10px;
+}
+.g-recaptcha *
+{
+    text-align: center;
 }

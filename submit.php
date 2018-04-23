@@ -5,6 +5,7 @@
     <title>Opera Omnia - Papers</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <meta name="viewport" content="width=device-width"/>
 </head>
 <body>
     <?php include("header.php"); ?>
@@ -43,10 +44,10 @@
                 </select>
             <br />
                 <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />    
-                <label for="paper">Paper (max: 1Mo) : <strong> (must be in pdf format) </strong></label><br />
+                <label for="paper" id='labelPaper'>Paper (max: 1Mo) : <br/><strong> (must be in pdf format) </strong></label><br />
                 <input type="file" name="paper" /><br />
             <br />
-            <div class="g-recaptcha" data-sitekey="6Ld4wlQUAAAAACkUoU2969gtylxLnEvshqlbGK8x"></div><br />
+            <div class="g-recaptcha" data-sitekey="6Ld4wlQUAAAAACkUoU2969gtylxLnEvshqlbGK8x" data-size="compact"></div><br />
             <?php
             require('recaptcha/autoload.php');
                 if(isset($_POST['g-recaptcha-response']))
