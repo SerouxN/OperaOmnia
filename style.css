@@ -236,8 +236,9 @@ p
     background-size:100%; 
 }
 
-.homeBox
-{
+.contHome {
+    position: relative;
+    text-align: center;
     color: white;
     border: 1px solid white;
     width: 25%;
