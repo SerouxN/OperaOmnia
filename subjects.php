@@ -28,7 +28,7 @@
         echo '</div>'
         ?>
      </div>
-     <div class="menuSubject">
+     <div class="menuSubject" >
         <div class = "subjectMaths"><strong>Mathematics</strong></div>
         <?php        
         $reponse = $bdd->query('SELECT Title,ID FROM papers WHERE Field = \'Mathematics\'');

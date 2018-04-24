@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php include("header.php"); ?>
-    <section>
+    <section class='sectionSubmit'>
         <h1>Submit</h1>
         
         <fieldset class = "submitPaper">
@@ -55,7 +55,7 @@
                     $recaptcha = new \ReCaptcha\ReCaptcha('6Ld4wlQUAAAAAIIvYwnYNZAdTSgRmRL9NsrMNshR');
                     $resp = $recaptcha->verify($_POST['g-recaptcha-response']);
                     if ($resp->isSuccess()) {
-                        $url='submitted.php';
+                        $url='submitted';
                         echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';                    } 
                     else {
                         $errors = $resp->getErrorCodes();

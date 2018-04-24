@@ -221,7 +221,7 @@ p
 }
 .home
 {
-    background-image: url(background.jpg);
+    background-image: url(background2.jpg);
     background-repeat: no-repeat;
     background-size:100%; 
 }
@@ -230,12 +230,18 @@ p
     position: relative;
     text-align: center;
     color: white;
-    border: 1px solid white;
-    width: 25%;
-    margin-left: 55px;
-    margin-top: 10%;
-    padding-left: 15px;
-    padding-right: 15px;
+}
+.titleHome
+{
+    font-size: 5em;
+    padding: 5.0px;
+    text-align: center;
+    color: black;   
+
+}
+.titleHome + p
+{
+    text-align: center
 }
 .menuSubject
 {
@@ -413,6 +419,22 @@ p
 .g-recaptcha *
 {
     text-align: center;
+}
+.lastPapers
+{
+    background-color: dimgray;
+    padding: 15px;  
+}
+.lastPaper
+{
+    background-color: rgb(153, 145, 145)
+}
+@media screen and (max-width: 610px)
+{
+    .lastPaper ul li a 
+    {
+        font-size: 0.8em;
+    }
 }
 .topnav .icon 
 {
