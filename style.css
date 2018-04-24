@@ -137,23 +137,13 @@ nav ul li a:hover {
 {
     border-bottom: 1px solid #bbb;
 }
-@media screen and (max-width: 610px)
+@media screen and (max-width: 612px)
 {
-
-    nav ul li 
-    {
-        display: none;
-    }
-    .sticky ul 
-    {
-        display: none;
-    }
     #bigTitle
     {
-        font-size: 25px;
+        font-size: 30px;
     }
 }
-
 
 footer
 {
@@ -258,9 +248,8 @@ p
     margin-bottom: 20px;
     padding-right: 4px;
 }
-@media screen and (max-width: 610px)
+@media screen and (max-width: 612px)
 {
-
     .menuSubject
     {
         width: 100%;
@@ -425,3 +414,65 @@ p
 {
     text-align: center;
 }
+.topnav .icon 
+{
+    display: none;
+}
+@media screen and (max-width: 612px) 
+{
+    .topnav #home
+    {
+        font-size: 25px;
+        border: none;
+    }
+    .topnav li
+    {
+        font-size: 14px;
+    }
+    .topnav li:not(:first-child) 
+    {
+       display: none;
+    }
+    .topnav li.icon 
+    {
+        float:right;
+        display: block;
+    }
+}
+@media screen and (max-width: 612px) 
+{
+    .topnav.responsive #home
+    {
+        border: none;
+        font-size: 25px;
+    }
+    .topnav.responsive li
+    {
+        padding: 6px;
+        padding-left: 15px;
+    }
+    .topnav.responsive li a
+    {
+        font-size: 19px;
+    }
+    .topnav.responsive 
+    {
+        position: relative;
+    }
+    .topnav.responsive li.icon 
+    {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive li 
+    {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .topnav.responsive #submit 
+    {
+        display:none;
+    }
+  }
