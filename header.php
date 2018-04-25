@@ -7,6 +7,7 @@
             <li><a href="index" id="home">Home</a></li>
             <li><a href="subjects">Papers</a></li>
             <li><a href="authors">Authors</a></li>
+            <li><a href="search" id="search">Search</a></li>           
             <li><a href="submit" id="submit">Submit a Paper</a></li>
             <li class="icon"><a href="javascript:void(0);" onclick="dropdown()">&#9776;</a></li>
         </ul>

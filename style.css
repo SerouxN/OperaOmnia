@@ -173,13 +173,12 @@ footer p
     border-radius: 4px;
     color: black;
     font-size: 18px;
-    margin:6px;
+    margin-top:10px;
     height:30px;
     text-align: center;
     cursor: pointer;
-    position:absolute;
-    margin-right:100px;
-    right:0;
+    margin-left:100px;
+    left:0;
 }
 select {
     padding: 10px;
