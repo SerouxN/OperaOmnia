@@ -68,6 +68,10 @@
                         {
                             echo "Dutch";
                         } 
+                        elseif ($version ==5)
+                        {
+                            echo "Latin";
+                        } 
                     ?></td>
                     <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
                 </tr>
