@@ -15,7 +15,7 @@
 		<fieldset>
 			<legend> Are you searching a paper ? You are in the right place ! </legend>
 			<label for='title'> Title : </label> <br />
-            <input type='text' name='title' id ='title' placeholder='<?php if(isset($_POST['title']) && !empty($_POST['title'])){echo ($_POST['title']);}?>'/>
+            <input type='text' name='title' id ='title' <?php if(isset($_POST['title']) && !empty($_POST['title'])){echo "value=\"".$_POST['title']."\"";}?>/>
 			<div id="selectField">
 				<p>Only show:</p>
 				<input type="radio" name="field" value="all" <?php if(!isset($_POST['field']) or $_POST['field']=='all') {echo 'checked';}?>>All <br>
