@@ -85,7 +85,7 @@
                         $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND  Format=0 ORDER BY Year, ID');
                         while ($data = $reponse->fetch())
                         {?>
-                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><figure><img width="232" height="300" src="papers/<?php echo $data['ID'];?>_thumb.png" /></figure></a></li>
+                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/<?php echo $data['ID'];?>_thumb.png" /></a></li>
                         <?php
                         }
                         $reponse->closeCursor();?>

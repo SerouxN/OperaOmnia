@@ -22,10 +22,8 @@
     }?>
     <script>
         window.onscroll = function() {myFunction()};
-
         var navbar = document.getElementById("navbar");
         var sticky = navbar.offsetTop;
-
         function myFunction() 
         {
             if (window.pageYOffset >= sticky) 
@@ -41,9 +39,10 @@
             var x = document.getElementById("navbar");
             if (x.className === "topnav") {
                 x.className += " responsive";
-            } else {
+            } 
+            else {
              x.className = "topnav";
+            }
         }
-}
     </script>
 </header>
