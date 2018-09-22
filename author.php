@@ -54,7 +54,7 @@
                     $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND Major=1 ORDER BY Year, ID');
                     $num_rows=$reponse->fetchColumn();
                     if ($num_rows > 0) {?>
-                        <aside id=<?php echo $asideColor;?>>
+                        <!--<aside id=<?php echo $asideColor;?>>
                         <h1>His Major Publications</h1>
                         <ul>
                             <?php
@@ -65,10 +65,12 @@
                             }}
                             $reponse->closeCursor();?>
                         </ul>
-                        </aside>
+                        </aside> -->
+
                 <h1>His Life</h1>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $bio?></p>
-                <h1>Papers by <?php echo $name?></h1>   
+                <h1>His Works</h1>   
+                            
                 <ul id="paperList">
                     <?php
                         try
@@ -80,10 +82,10 @@
                         {
                             die('Erreur : '.$e->getMessage());
                         }
-                        $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' ORDER BY Year, ID');
+                        $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND  Format=0 ORDER BY Year, ID');
                         while ($data = $reponse->fetch())
                         {?>
-                        <li><a href="paper.php?id=<?php echo $data['ID'];?>"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</a></li>
+                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><figure><img width="232" height="300" src="papers/<?php echo $data['ID'];?>_thumb.png" /></figure></a></li>
                         <?php
                         }
                         $reponse->closeCursor();?>

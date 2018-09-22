@@ -212,11 +212,24 @@ p
 {
     padding:10px;
 }
+#paperList
+{
+    list-style-type: none;
+    padding: 50px;
+}
+#paperList li
+{
+    display: inline-block;
+}
 #paperList a
 {
     text-decoration: none;
     color:black;
     font-size: 18px;
+}
+#paperList img
+{
+    border: 2px solid black;
 }
 .home
 {
