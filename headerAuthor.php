@@ -13,7 +13,7 @@
     </nav>
     <?php
     if (file_exists("banners/". $_GET['authid'].".png")) {?>
-        <img id="banner" src="banners/n<?php echo $_GET['authid']?>.png" />
+        <img id="banner" src="banners/<?php echo $_GET['authid']?>.png" />
     <?php
     }
     else {?>
