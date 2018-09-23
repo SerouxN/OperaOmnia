@@ -2,6 +2,7 @@
 <html>
     <head>
         <?php
+        $field=0; //0: maths, 1:compsci, 2:physics
             try
             {
                 $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
@@ -16,8 +17,26 @@
             {
                 $title=$data['Title'];
                 $description=$data['Description'];
+                $AuthID=$data['AuthorID'];
             }
-            $reponse->closeCursor();
+            $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID='. $AuthID);
+            while ($data = $reponse2->fetch())
+            {
+                $AuthField=$data['Field'];
+                if ($AuthField=="Mathematics")
+                {
+                    $field=0;
+                }
+                elseif ($AuthField=="Physics")
+                {
+                    $field=2;
+                }
+                else
+                {
+                    $field=1;
+                }
+            }
+            $reponse2->closeCursor();
         ?>
         <title>Opera Omnia - <?php echo $data['Title']?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -30,20 +49,34 @@
             <h2>Description</h2>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $description ?></p>
             <h2>Versions</h2>
-            <table id="authList" width="90%">
+            <table id=
+            <?php 
+            if ($field==0)
+            {
+                echo "\"versionListMaths\"";
+            } 
+            elseif ($field==1)
+            {
+                echo "\"versionListCpsci\"";
+            }
+            elseif ($field==2)
+            {
+                echo "\"versionListPhys\"";
+            }?>
+             width="90%">
                 <tr>
                     <th>Title</th>
                     <th>Version</th>
                     <th>Link</th>
                 </tr>
                 <?php
+                    include 'PDFInfo.php';
                     foreach (glob("papers/". $_GET['id']."_*") as $filename) {
-                    $sourcefile = $filename;
-                    $stringedPDF = file_get_contents($sourcefile, true);
-                    preg_match('/(?<=Title )\S(?:(?<=\().+?(?=\))|(?<=\[).+?(?=\]))./', $stringedPDF, $title);
-                    preg_match('#\((.*?)\)#', $title[0], $match);
-                    $fileTitle = utf8_encode($match[1]);
-                    $version=substr($filename, -5, 1);
+                        $paper = new PDFInfo;
+                        $paper->load($filename);
+                        $fileTitle="";
+                        $fileTitle=$paper->title;
+                        $version=substr($filename, -5, 1);
                 ?>
                 <tr>
                     <td id="paperTitle"><?php echo $fileTitle ?></td>
@@ -75,7 +108,7 @@
                     ?></td>
                     <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
                 </tr>
-                <?php 
+                <?php
                 }
                 ?>
             </table>

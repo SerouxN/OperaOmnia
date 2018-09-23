@@ -602,3 +602,103 @@ p
     from {opacity: .4} 
     to {opacity: 1}
   }
+
+  #versionListMaths 
+{
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    margin-top:65px;
+    min-width: 100px;
+    border-radius: 30px;
+}
+
+#versionListMaths th, td 
+{
+    text-align: left;
+    padding: 6px;
+    border: 1px solid rgb(226, 226, 226);
+}
+#versionListMaths tr:nth-child(even)
+{
+    background-color: #f3f3f3
+}
+#versionListMaths tr:nth-child(odd)
+{
+    background-color: #f7f7f7
+}
+#versionListMaths th 
+{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(128, 9, 9);
+    border: 1px solid rgb(87, 5, 5);
+    color: white;
+}
+#versionListPhys 
+{
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    margin-top:65px;
+    min-width: 100px;
+    border-radius: 30px;
+}
+
+#versionListPhys th, td 
+{
+    text-align: left;
+    padding: 6px;
+    border: 1px solid rgb(226, 226, 226);
+}
+#versionListPhys tr:nth-child(even)
+{
+    background-color: #f3f3f3
+}
+#versionListPhys tr:nth-child(odd)
+{
+    background-color: #f7f7f7
+}
+#versionListPhys th 
+{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(0, 121, 158);
+    border: 1px solid rgb(0, 100, 131);
+    color: white;
+}
+#versionListCpsci
+{
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    margin-top:65px;
+    min-width: 100px;
+    border-radius: 30px;
+}
+
+#versionListCpsci th, td 
+{
+    text-align: left;
+    padding: 6px;
+    border: 1px solid rgb(226, 226, 226);
+}
+#versionListCpsci tr:nth-child(even)
+{
+    background-color: #f3f3f3
+}
+#versionListCpsci tr:nth-child(odd)
+{
+    background-color: #f7f7f7
+}
+#versionListCpsci th 
+{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #530a63;
+    border: 1px solid #3d0849;
+    color: white;
+}
