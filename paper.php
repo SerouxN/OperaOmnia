@@ -63,7 +63,7 @@
                 }
                 else if (($numberOfVersions==1))
                 {
-                    echo "There is only <strong>".$numberOfVersions."</strong>  one version of this paper available on <em>Opera Omnia</em>.";
+                    echo "There is only <strong>".$numberOfVersions."</strong> version of this paper available on <em>Opera Omnia</em>.";
                     ?>
                     <table width="90%" id=
                     <?php 
