@@ -61,6 +61,75 @@
                 {
                     echo "This paper is not available on Opera Omnia!";
                 }
+                else if (($numberOfVersions==1))
+                {
+                    echo "There is only <strong>".$numberOfVersions."</strong>  one version of this paper available on <em>Opera Omnia</em>.";
+                    ?>
+                    <table width="90%" id=
+                    <?php 
+                        if ($field==0)
+                        {
+                            echo "\"versionListMaths\"";
+                        } 
+                        elseif ($field==1)
+                        {
+                            echo "\"versionListCpsci\"";
+                        }
+                        elseif ($field==2)
+                        {
+                            echo "\"versionListPhys\"";
+                        }
+                    ?>>
+                        <tr>
+                            <th>Title</th>
+                            <th>Version</th>
+                            <th>Link</th>
+                        </tr>
+                            <?php
+                                include 'PDFInfo.php';
+                                foreach (glob("papers/". $_GET['id']."_*") as $filename) 
+                                {
+                                    $paper = new PDFInfo;
+                                    $paper->load($filename);
+                                    $fileTitle="";
+                                    $fileTitle=$paper->title;
+                                    $version=substr($filename, -5, 1);?>
+                        <tr>
+                            <td id="paperTitle"><?php echo $fileTitle ?></td>
+                            <td id="version"><?php 
+                                if ($version ==0)
+                                {
+                                    echo "Original Scan";
+                                }   
+                                elseif ($version ==1)
+                                {
+                                    echo "English";
+                                }    
+                                elseif ($version ==2)
+                                {
+                                    echo "German";
+                                } 
+                                elseif ($version ==3)
+                                {
+                                    echo "French";
+                                } 
+                                elseif ($version ==4)
+                                {
+                                    echo "Dutch";
+                                } 
+                                elseif ($version ==5)
+                                {
+                                    echo "Latin";
+                                } 
+                            ?></td>
+                            <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            <?php
+            }
                 else
                 {
                     echo "There are <strong>".$numberOfVersions."</strong> different versions of this paper available on <em>Opera Omnia</em>.";
