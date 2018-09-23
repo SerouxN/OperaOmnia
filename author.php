@@ -70,7 +70,7 @@
                 <h1>His Life</h1>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $bio?></p>
                 <h1>His Works</h1>   
-                            
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;Papers</h2>              
                 <ul id="paperList">
                     <?php
                         try
@@ -83,6 +83,26 @@
                             die('Erreur : '.$e->getMessage());
                         }
                         $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND  Format=0 ORDER BY Year, ID');
+                        while ($data = $reponse->fetch())
+                        {?>
+                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/<?php echo $data['ID'];?>_thumb.png" /></a></li>
+                        <?php
+                        }
+                        $reponse->closeCursor();?>
+                </ul>
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;Books</h2>
+                <ul id="paperList">
+                    <?php
+                        try
+                        {
+                            $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+                            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        }
+                        catch(Exception $e)
+                        {
+                            die('Erreur : '.$e->getMessage());
+                        }
+                        $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND  Format=1 ORDER BY Year, ID');
                         while ($data = $reponse->fetch())
                         {?>
                         <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/<?php echo $data['ID'];?>_thumb.png" /></a></li>

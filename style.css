@@ -216,11 +216,11 @@ p
 #paperList
 {
     list-style-type: none;
-    padding: 50px;
 }
 #paperList li
 {
     display: inline-block;
+    padding: 10px;
 }
 #paperList a
 {
@@ -230,7 +230,14 @@ p
 }
 #paperList img
 {
-    border: 2px solid black;
+    border: 2px solid rgb(51, 51, 51);
+    
+}
+#paperList img:hover
+{
+    border: 3px solid black;
+    transition-property: border;
+    transition-duration: 500;
 }
 .home
 {
