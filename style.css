@@ -7,6 +7,7 @@ body
 {
     font-family: 'Raleway', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin:0;
+    font-size: 17px;
 }
 section
 {
@@ -211,7 +212,8 @@ p
 }
 #core
 {
-    padding:10px;
+    padding-left:20px;
+    padding-right: 20px;
 }
 #paperList
 {
@@ -230,14 +232,17 @@ p
 }
 #paperList img
 {
-    border: 2px solid rgb(51, 51, 51);
-    
+    outline: 2px solid rgb(51, 51, 51);
+    -webkit-transition: outline 2s;
+    -webkit-transition: box-shadow 2s;
+    transition: outline 2s;
+    transition: box-shadow 2s;
 }
 #paperList img:hover
 {
-    border: 3px solid black;
+    outline: 3px solid black;
     transition-property: border;
-    transition-duration: 500;
+    box-shadow: 7px 7px 5px grey;
 }
 .home
 {
@@ -359,11 +364,17 @@ p
 }
 #sourcesPage img
 {
-    height: 30px;
+    height: 17px;
     border-radius: 2px;
     margin-right: 10px;
     margin-left: 10px;
 }
+#sourcesPage a
+{
+    text-decoration: none;
+    color: black;
+}
+
 #placeholder
 {
     height:auto;
@@ -738,4 +749,13 @@ footer a
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(155, 155, 155);
     font-weight: lighter;
+}
+h1
+{
+    font-size: 28px;
+}
+h1 strong
+{
+    font-weight: bolder;
+    font-size: 30px;
 }
