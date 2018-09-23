@@ -41,32 +41,6 @@
         <section>
             <h1 id="nameAuthor"><?php echo $name?></h1>
             <div id="core">
-                <?php
-                    try
-                    {
-                        $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
-                        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    }
-                    catch(Exception $e)
-                    {
-                            die('Erreur : '.$e->getMessage());
-                    }
-                    $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND Major=1 ORDER BY Year, ID');
-                    $num_rows=$reponse->fetchColumn();
-                    if ($num_rows > 0) {?>
-                        <!--<aside id=<?php echo $asideColor;?>>
-                        <h1>His Major Publications</h1>
-                        <ul>
-                            <?php
-                            while ($data = $reponse->fetch())
-                            {?>
-                                <li><a href="paper.php?id=<?php echo $data['ID'];?>"><?php echo $data['Title']?></a></li>
-                                <?php
-                            }}
-                            $reponse->closeCursor();?>
-                        </ul>
-                        </aside> -->
-
                 <h1>His Life</h1>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $bio?></p>
                 <h1>His Works</h1>   

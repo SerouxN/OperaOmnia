@@ -10,3 +10,11 @@ Type codes for the papers:
     3: French
     4: Dutch
     5: Latin
+
+Banner:
+	Portrait:
+		Color Overlay: Hard Light (#bc0a0a for Maths), Opacity 28%
+		Drop Shadow: Black, 60%, -155°, 63px, 0%, 79px
+	Text:
+		Color Overlay; Normal, #d54e4e, 100%; 20% opacity on layer, Gaussian Blur 3.6px
+		
