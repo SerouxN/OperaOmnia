@@ -51,11 +51,18 @@
           {
               die('Erreur : '.$e->getMessage());
           }        
-          $reponse = $bdd->query('SELECT Title,ID FROM papers ORDER BY ID DESC');
+          $reponse = $bdd->query('SELECT * FROM papers ORDER BY ID DESC');
           echo ('<div class=\'lastPaper\'/>');
           while ($data = $reponse->fetch())
           {
-              echo ('<ul> <li> <a href=paper.php?id='.$data['ID'].'>'.$data['Title'].'</a></li> </ul>');
+            $AuthID=$data['AuthorID'];
+            $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID= '.$AuthID);
+          while ($data2 = $reponse2->fetch())
+          {
+            $FirstName=$data2['FirstName'];
+            $LastName=$data2['LastName'];
+          }
+              echo ('<ul> <li class="lastPaper"> <a id="lastPaperLink" href=paper.php?id='.$data['ID'].'>'.$data['Title'].' by <strong>'.$FirstName.' '.$LastName.'</strong></a></li> </ul>');
           }
           echo '</div>'
         ?>

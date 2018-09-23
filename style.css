@@ -349,6 +349,21 @@ p
     margin-right: 10px;
     margin-left: 10px;
 }
+#sourcesPage
+{
+    list-style-type: none;
+}
+#sourcesPage li
+{
+    padding: 10px;
+}
+#sourcesPage img
+{
+    height: 30px;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
 #placeholder
 {
     height:auto;
@@ -442,13 +457,14 @@ p
 }
 .lastPapers
 {
-    background-color: dimgray;
-    padding: 15px;  
+    background-color: rgb(190, 190, 190);
+    padding: 15px;
 }
 .lastPaper
 {
-    background-color: rgb(153, 145, 145)
+    background-color: rgb(236, 236, 236);
 }
+
 @media screen and (max-width: 610px)
 {
     .lastPaper ul li a 
@@ -701,4 +717,25 @@ p
     background-color: #530a63;
     border: 1px solid #3d0849;
     color: white;
+}
+#lastPaperLink
+{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+strong
+{
+    font-weight: bold;
+}
+em
+{
+    font-style: italic;
+}
+footer a
+{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(155, 155, 155);
+    font-weight: lighter;
 }
