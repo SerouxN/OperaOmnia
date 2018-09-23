@@ -46,7 +46,7 @@
             <tr>
                 <th>Name</th>
                 <th>Years</th>
-                <th>Bio</th>
+                <th class="biography">Bio</th>
                 <th>Field</th>
                 <th>Link</th>
                 </tr>
