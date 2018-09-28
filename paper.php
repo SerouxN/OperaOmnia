@@ -89,13 +89,36 @@
                                 include 'PDFInfo.php';
                                 foreach (glob("papers/". $_GET['id']."_*") as $filename) 
                                 {
+                                    $homeMade=0;
                                     $paper = new PDFInfo;
                                     $paper->load($filename);
                                     $fileTitle="";
                                     $fileTitle=$paper->title;
-                                    $version=substr($filename, -5, 1);?>
-                        <tr>
-                            <td id="paperTitle"><?php echo $fileTitle ?></td>
+                                    $version=substr($filename, -5, 1);
+                                    if(is_numeric($version)==false)
+                                    {
+                                        if($version == "!")
+                                        {
+                                            $homeMade=1;
+                                        }
+                                        else
+                                        {
+                                            $homeMade=0;
+                                        }
+                                        $version=substr($filename, -6, 1);
+                                    }?>
+                            <tr>
+                                    <?php 
+                                    if ($homeMade==1)
+                                    {?>
+                                        <td id="paperTitle"><strong><?php echo $fileTitle ?></strong></td>
+                                    <?php
+                                    }
+                                    else
+                                    {?>
+                                        <td id="paperTitle"><?php echo $fileTitle ?></td>
+                                    <?php
+                                    }?>
                             <td id="version"><?php 
                                 if ($version ==0)
                                 {
@@ -120,6 +143,10 @@
                                 elseif ($version ==5)
                                 {
                                     echo "Latin";
+                                } 
+                                elseif ($version ==6)
+                                {
+                                    echo "Portuguese";
                                 } 
                             ?></td>
                             <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
@@ -158,13 +185,36 @@
                                 include 'PDFInfo.php';
                                 foreach (glob("papers/". $_GET['id']."_*") as $filename) 
                                 {
+                                    $homeMade=0;
                                     $paper = new PDFInfo;
                                     $paper->load($filename);
                                     $fileTitle="";
                                     $fileTitle=$paper->title;
-                                    $version=substr($filename, -5, 1);?>
-                        <tr>
-                            <td id="paperTitle"><?php echo $fileTitle ?></td>
+                                    $version=substr($filename, -5, 1);
+                                    if(is_numeric($version)==false)
+                                    {
+                                        if($version == "!")
+                                        {
+                                            $homeMade=1;
+                                        }
+                                        else
+                                        {
+                                            $homeMade=0;
+                                        }
+                                        $version=substr($filename, -6, 1);
+                                    }?>
+                            <tr>
+                                    <?php 
+                                    if ($homeMade==1)
+                                    {?>
+                                        <td id="paperTitle"><strong><?php echo $fileTitle ?></strong></td>
+                                    <?php
+                                    }
+                                    else
+                                    {?>
+                                        <td id="paperTitle"><?php echo $fileTitle ?></td>
+                                    <?php
+                                    }?>
                             <td id="version"><?php 
                                 if ($version ==0)
                                 {
@@ -189,7 +239,11 @@
                                 elseif ($version ==5)
                                 {
                                     echo "Latin";
-                                } 
+                                }
+                                elseif ($version ==6)
+                                {
+                                    echo "Portuguese";
+                                }  
                             ?></td>
                             <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
                         </tr>
@@ -200,6 +254,7 @@
             <?php
             }
             ?>
+            <p><br/>File names displayed in bold correspond to versions of the papers made by <em>Opera Omnia</em>.</p>
         </section>
         <?php include("footer.php"); ?>
     </body>
