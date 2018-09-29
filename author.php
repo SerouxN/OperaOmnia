@@ -91,7 +91,7 @@
                         {
                             $numberOfPapers=$numberOfPapers+1;
                             ?>
-                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
+                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="203" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
                         <?php
                         }
                         $reponse->closeCursor();
