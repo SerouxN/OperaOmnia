@@ -4,6 +4,12 @@
     <title>Opera Omnia - Subjects</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width" />
+    <style>
+      .topnav ul li a[href='subjects'] {
+        background-color: #BDBDBD; 
+        border-top: 5px solid #000000;
+      }
+    </style>
 </head>
 <body>
     <?php include("header.php"); ?>

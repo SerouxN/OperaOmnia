@@ -4,6 +4,12 @@
     <title>Opera Omnia</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="utf-8"/>
+	<style>
+      .topnav ul li a[href='search'] {
+		background-color: #BDBDBD; 
+		border-top: 5px solid #000000;
+      }
+    </style>
 </head>
 <header>
 	<?php include("header.php"); ?>

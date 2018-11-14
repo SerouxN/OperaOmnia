@@ -4,6 +4,12 @@
     <title>Opera Omnia - Authors</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8"/>
+    <style>
+      .topnav ul li a[href='authors'] {
+        background-color: #BDBDBD; 
+        border-top: 5px solid #000000;
+      }
+    </style>
 </head>
 <body> 
     <?php include("header.php"); 
