@@ -6,6 +6,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <meta name="viewport" content="width=device-width"/>
+    <style>
+      .topnav ul li a[href='submit'] {
+        background-color: #BDBDBD;
+        border-top: 5px solid #000000; 
+      }
+    </style>
 </head>
 <body>
     <?php include("header.php"); ?>
