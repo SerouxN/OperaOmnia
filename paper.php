@@ -94,6 +94,10 @@
                                     $paper->load($filename);
                                     $fileTitle="";
                                     $fileTitle=$paper->title;
+                                    if($fileTitle=="Untitled")
+                                    {
+                                        $fileTitle=$title;
+                                    }
                                     $version=substr($filename, -5, 1);
                                     if(is_numeric($version)==false)
                                     {
@@ -190,6 +194,10 @@
                                     $paper->load($filename);
                                     $fileTitle="";
                                     $fileTitle=$paper->title;
+                                    if($fileTitle=="Untitled")
+                                    {
+                                        $fileTitle=$title;
+                                    }
                                     $version=substr($filename, -5, 1);
                                     if(is_numeric($version)==false)
                                     {

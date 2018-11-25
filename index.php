@@ -7,7 +7,7 @@
     <meta charset="utf-8"/>
     <style>
       .topnav ul li a[href='index'] {
-        background-color: #BDBDBD;
+        background-color: #c0c0c0;
         border-top: 5px solid #000000; 
       }
     </style>
