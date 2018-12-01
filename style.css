@@ -47,33 +47,6 @@ aside a:hover
     color: white;
     text-decoration: underline;
 }
-nav ul
-{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border-bottom: 1px solid #bbb; 
-    background-color: white;
-    width: 100%;
-    top:0;
-    font-weight: bold;
-}
-nav ul li 
-{
-    display: inline;
-}
-nav ul li a
-{
-    font-size: 23px;
-    padding: 0px 6px 6px 6px ;
-    margin: 0 0 6 0 ;
-    color: black;
-    text-decoration: none;
-}
-nav ul li a:hover {
-    background-color: #efefef;
-}
 #submit
 {
     float: right;
@@ -105,25 +78,12 @@ nav ul li a:hover {
     top:0;
     border-bottom: 1px solid #bbb; 
 }
-.sticky ul li 
-{
-    display: inline;
-}
-.sticky ul li a
-{
-    font-size: 23px;
-    padding: 6px;
-    color: black;
-    text-decoration: none;
-}
-.sticky ul li a:hover {
-    background-color: #efefef;
-}
 .sticky 
 {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
 }
 #bigTitle
 {
@@ -485,13 +445,55 @@ p
         font-size: 0.8em;
     }
 }
-.topnav ul li 
+nav ul
 {
-    padding: 1px,
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 1px solid #bbb; 
+    background-color: white;
+    width: 100%;
+    top:0;
+    bottom:0;
+    font-weight: bold;
+}
+nav ul li 
+{
+    display: inline;
+    margin:0;
+}
+nav ul li a
+{
+    font-size: 23px;
+    padding: 6px;
+    color: black;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+nav ul li a:hover {
+    background-color: #efefef;
 }
 .topnav .icon 
 {
     display: none;
+}
+.sticky ul li 
+{
+    display: inline;
+}
+.sticky ul li a
+{
+    font-size: 23px;
+    padding: 6px;
+    color: black;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sticky ul li a:hover {
+    background-color: #efefef;
 }
 @media screen and (max-width: 612px) 
 {

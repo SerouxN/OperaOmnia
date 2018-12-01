@@ -5,9 +5,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8"/>
     <style>
-      .topnav ul li a[href='authors'] {
-        background-color: #BDBDBD; 
-        border-top: 5px solid #000000;
+      .topnav ul li [href='authors'] {
+        background-color: #d7d7d7; 
       }
     </style>
 </head>

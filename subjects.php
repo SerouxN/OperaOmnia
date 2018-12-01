@@ -5,9 +5,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width" />
     <style>
-      .topnav ul li a[href='subjects'] {
-        background-color: #BDBDBD; 
-        border-top: 5px solid #000000;
+      .topnav ul li [href='subjects'] {
+        background-color: #d7d7d7; 
       }
     </style>
 </head>
