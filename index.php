@@ -14,7 +14,7 @@
       <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
         <img src="images/slideshow/background.png" style="width:100%">
-        <div class="text">From the greatest the History of Science</div>
+        <div class="text">From the greatest in the History of Science</div>
       </div>
       <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
@@ -38,7 +38,7 @@
     <div class='titleHome'>
       Opera Omnia
     </div>
-    <p style ="margin-left: 5px; margin-right:5px;"> A small index for very great scientific papers. </p>
+    <p style ="margin-left: 5px; margin-right:5px;"> A small index for great scientific papers. </p>
     <section>
       <div class="menuSubject" style="margin: auto;">
         <div class = "lastPapers"><strong>Last Papers added</strong></div>

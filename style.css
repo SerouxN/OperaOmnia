@@ -76,7 +76,8 @@ aside a:hover
     background-color: white;
     width: 100%;
     top:0;
-    border-bottom: 1px solid #bbb; 
+    box-shadow: 0px 5px 10px #474747;
+    border-bottom: none; 
 }
 .sticky 
 {

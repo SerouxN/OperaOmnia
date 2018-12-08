@@ -12,6 +12,11 @@
             <li class="icon"><a href="javascript:void(0);" onclick="dropdown()">&#9776;</a></li>
         </ul>
     </nav>
+    <style>
+      .topnav ul li [href='authors'] {
+        background-color: #d7d7d7; 
+      }
+    </style>
     <?php
     if (file_exists("banners/". $_GET['authid'].".png")) {?>
         <img id="banner" src="banners/<?php echo $_GET['authid']?>.png" />
