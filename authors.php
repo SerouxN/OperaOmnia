@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
     <title>Opera Omnia - Authors</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8"/>
@@ -9,6 +11,13 @@
         background-color: #d7d7d7; 
       }
     </style>
+    <script>
+        jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+    </script>
 </head>
 <body> 
     <?php include("header.php"); 
@@ -48,12 +57,11 @@
         </form>
         <div style="overflow-x:auto;">
             <table id="authList" width="90%">
-            <tr>
+            <tr id="tableAuthorList">
                 <th>Name</th>
                 <th>Years</th>
                 <th class="biography">Bio</th>
                 <th>Field</th>
-                <th>Link</th>
                 </tr>
             <?php
                 $chosenMethod='LastName';
@@ -131,12 +139,11 @@
                 {
                     $nResults=$nResults+1;
             ?>
-                <tr>
-                <td id="authName"><?php echo $data['FirstName']?> <strong><?php echo $data['LastName']; ?></strong></td>
+                <tr class='clickable-row' data-href='author.php?authid=<?php echo $data['ID']?>'>
+                <td id="authName"><?php echo $data['FirstName']; ?> <strong><?php echo $data['LastName']; ?></strong></td>
                 <td>(<?php echo date_format(date_create($data['Birthday']),"Y");?>-<?php if($data['DateOfDeath'] != NULL){echo date_format(date_create($data['DateOfDeath']),"Y");}else{echo "  ";} ?>)</td>
                 <td id="bio"><?php echo substr($data['Bio'], 0, 100)?>...</td>
                 <td><?php echo $data['Field']?></td>
-                <td><a id="goLink" href="author.php?authid=<?php echo $data['ID']?>"><p>Go</p></a></td>
                 </tr>
             <?php  
                 }

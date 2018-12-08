@@ -236,7 +236,7 @@ p
     justify-content: center;
     flex-direction: column;
     margin-left: 20px;
-    width: 600px;
+    width:80%;
     border-radius: 5px;
     margin-bottom: 20px;
     padding-right: 4px;
@@ -356,7 +356,7 @@ p
 {
     text-align: left;
     padding: 6px;
-    border: 1px solid rgb(226, 226, 226);
+    border: 1px solid rgb(126, 126, 126);
 }
 #authList tr:nth-child(even)
 {
@@ -365,6 +365,11 @@ p
 #authList tr:nth-child(odd)
 {
     background-color: #f7f7f7
+}
+#authList tr:hover
+{
+    cursor: pointer;
+    background-color: rgb(226, 226, 226)
 }
 #authList th 
 {
@@ -383,7 +388,6 @@ p
 {
     text-decoration: none;
     color: black;
-    font-weight: bold;
 }
 #bio
 {
@@ -767,4 +771,8 @@ h1 strong
 {
     font-weight: bolder;
     font-size: 30px;
+}
+#tableAuthorList
+{
+    margin: 10px;
 }
