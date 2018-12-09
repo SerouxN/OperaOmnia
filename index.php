@@ -71,14 +71,17 @@
     <?php include("footer.php"); ?>
     <script>
     var slideIndex = 1;
-    showSlides(slideIndex);
+    showSlides(slideIndex + 1);
     function plusSlides(n) 
     {
+      clearInterval(slideshow);
       showSlides(slideIndex += n);
     }
     function currentSlide(n) 
     {
       showSlides(slideIndex = n);
+      clearInterval(slideshow);
+      
     }
     function showSlides(n) 
     {
@@ -98,6 +101,10 @@
       slides[slideIndex-1].style.display = "block"; 
       dots[slideIndex-1].className += " active";
     }
+
+      var slideshow = setInterval(() => {
+        showSlides(slideIndex += 1);
+      }, 10000);
     </script>
   </body>
 </html>
