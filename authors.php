@@ -27,8 +27,8 @@
         <h1>Authors</h1>
         <form method="post" action="#">
             <div id="formAuthors">
-                <fieldset>
-                    <legend>Research Parameters:</legend>
+            <fieldset>
+            <legend><b> Search an author :</b></legend>
                     <label for="name">Name of the author:</label>
                     <input type="text" name="name" id="name"<?php if(isset($_POST['name'])){echo "value=\"".$_POST['name']."\"";}?>/>
                     <div id="selectField">
@@ -37,7 +37,6 @@
                         <input type="checkbox" name="field[]" value="Mathematics" <?php if(isset($_POST['field']) && in_array("Mathematics", $_POST['field'])){echo 'checked';}?>>Mathematicians<br>
                         <input type="checkbox" name="field[]" value="Computer Science" <?php if(isset($_POST['field']) && in_array("Computer Science", $_POST['field'])){echo 'checked';}?>>Computer Scientists<br>
                     </div>
-                </fieldset>
                 <fieldset>
                     <legend>Sort by:</legend>
                     <select name="sorting" size="1">
@@ -52,6 +51,7 @@
                         <input type="radio" name="order" value="DESC" <?php if(isset($_POST['order']) && $_POST['order'] == "DESC"){echo 'checked';}?>>Descending<br>
                     </div>
                 </fieldset>
+            </fieldset>
             </div>
             <input id="submitButton" type="submit" value="Submit">
         </form>

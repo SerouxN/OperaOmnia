@@ -1,11 +1,11 @@
 <div id="placeholder"></div>
 <footer>
     <p>Opera Omnia - 2018<br/>
-    Pre Pre Alpha 0.0.1</p>
+    (Pre )^32 Alpha</p>
     
     <div id="sources">
         <p>
-            All papers and books featured on this website come from:
+            All papers and books featured on this website come from :
             <ul>
                 <li><a title="arXiv" href="https://arxiv.org/"><img src="images/footer/arXivLogo.png" /></a></li>
                 <li><a title="JSTOR" href="https://www.jstor.org/"><img src="images/footer/jstorLogo.png" /></a></li>

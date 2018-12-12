@@ -22,11 +22,12 @@
 <body>
     <?php include("header.php"); ?>
     <section>
-    <h1>Authors</h1>
+    <h1>Papers : </h1>
         <form method="post" action="#">
             <div id="formAuthors">
-                <fieldset>
-                    <legend>Research Parameters:</legend>
+            <fieldset>
+            <legend><b>Search a paper :</b></legend>
+                    <legend><b></b></legend>
                     <label for="name">Title:</label>
                     <input type="text" name="name" id="name"<?php if(isset($_POST['name'])){echo "value=\"".$_POST['name']."\"";}?>/>
                     <div id="selectField">
@@ -35,7 +36,6 @@
                         <input type="checkbox" name="field[]" value="Mathematics" <?php if(isset($_POST['field']) && in_array("Mathematics", $_POST['field'])){echo 'checked';}?>>Mathematics<br>
                         <input type="checkbox" name="field[]" value="Computer Science" <?php if(isset($_POST['field']) && in_array("Computer Science", $_POST['field'])){echo 'checked';}?>>Computer Science<br>
                     </div>
-                </fieldset>
                 <fieldset>
                     <legend>Sort by:</legend>
                     <select name="sorting" size="1">
@@ -48,10 +48,10 @@
                         <input type="radio" name="order" value="DESC" <?php if(isset($_POST['order']) && $_POST['order'] == "DESC"){echo 'checked';}?>>Descending<br>
                     </div>
                 </fieldset>
+            </fieldset>
             </div>
             <input id="submitButton" type="submit" value="Submit">
         </form>
-    <h1>Subjects</h1>
     <div style="overflow-x:auto;">
             <table id="authList" width="90%">
             <tr>

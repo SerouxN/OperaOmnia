@@ -429,14 +429,28 @@ p
     cursor: pointer;
     margin-left: 10px;
 }
+.sectionSubmit div *
+{
+    margin-bottom: 8px;
+}
+.sectionSubmit div input
+{
+    width: 20%;
+    margin-left: 9px;
+}
+.sectionSubmit div select
+{
+    margin-left: 9px;}
+
 .g-recaptcha *
 {
     text-align: center;
+    margin-left: 3px;
 }
 .lastPapers
 {
     background-color: rgb(190, 190, 190);
-    padding: 15px;
+    padding-top: 15px;
 }
 .lastPaper
 {
