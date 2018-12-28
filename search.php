@@ -40,7 +40,7 @@
 		}
 		else if (isset($_POST['title']))
 		{
-			echo "<strong style= 'color: red;'> Title is empty .. like your head, it seems to be.</strong>";
+			echo "<strong style= 'color: red;'> Title is empty .. .</strong>";
 		}
 		if(isset($_POST['field']) && $_POST['field'] != 'all'&& !empty($_POST['field']) && !empty($_POST['title']))
 		{
