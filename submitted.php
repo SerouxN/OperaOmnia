@@ -11,7 +11,7 @@
 <body>
 <?php
 //Verification du fichier 
-if (isset($_POST['submit']))
+if ($_FILES['paperSubmitted']['error'] == 0)
 
 {
 	if ($_FILES['paperSubmitted']['size'] <= 1000000)
@@ -31,8 +31,7 @@ if (isset($_POST['submit']))
 			
 			$last_id = $db->query('SELECT max(ID) FROM submits');
 			$last_id = $last_id -> fetch();
-			echo $last_id[0] ;
-			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' . basename($last_id[0] + 1));
+			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' . basename($last_id[0] + 1).'.pdf');
 			 $req = $db->prepare('INSERT INTO submits( AuthorID, Title, Summary, Year, Field) 
 			 		VALUES(:AuthorID, :Title, :Summary, :Year, :Field)');
 			$req->execute(array(
@@ -50,7 +49,7 @@ if (isset($_POST['submit']))
 				<div id='space'></div>";
 
 		}
-	else
+		else
 		{
 			$error =  1;
 		} 
@@ -63,7 +62,6 @@ if (isset($_POST['submit']))
 }
 else
 {
-	echo 'test2';
 	$error =  3;
 }
 

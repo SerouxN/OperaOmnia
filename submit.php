@@ -11,6 +11,7 @@
         background-color: #BDBDBD;
       }
     </style>
+
 </head>
 <body>
     <?php include("header.php"); ?>
@@ -22,10 +23,11 @@
         <form action="submitted.php" enctype="multipart/form-data" method="post">
             <div>
                     <label class = 'submitPaper_content' for='title'> <b>Title :</b> </label> <br />
-                    <input size = "4"type='text' name='title' id ='title' />
+                    <input size = "4"type='text' name='title' id ='title' required/>
                 <br/>
                     <label for='year'> <b>Year of publication :</b> </label>
-                    <select name="year"> 
+                    <select name="year" required>
+                    <option selected ='selected' disabled value="" >Choose a year ...</option> 
                     <?php   
                         for ($i = 2018; $i >= 0;$i --) // à changer 
                         {
@@ -36,10 +38,10 @@
                 <br />
                     <label for='summary'> <b>Small Description :</b></label>
                 <br />
-                    <input type ='text' name='summary'/>
+                    <input type ='text' name='summary' required />
                 <br />
                     <label for='Field'><b>Field :</b></label>
-                    <select name="field">
+                    <select name="field" id = 'field' required>
                         <option selected ='selected' disabled value="" >Choose a field ...</option>
                         <option value="Physics">Physics</option>
                         <option value="Mathematics">Mathematics</option>
@@ -47,8 +49,8 @@
                     </select>
                 <br />  
                 <label for='authorID'><b>Select the author : </b></label>
-                    <select name="authorID">
-                        <option selected ='selected' disabled value="" >Choose an author ...</option>
+                    <select name="authorID"id = 'authorID' required>
+                        <option selected ='selected' disabled value="" required>Choose an author ...</option>
                         <?php
                         try
                         {
@@ -69,11 +71,11 @@
                         ?>
                         <option value="unspecified">Other</option>
                         <!-- TODO : faire jaavscript qui affiche un menu ouy mettre m'auteur -->
-                    </select>
+                    </select >
                 <br />
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />    
                     <label for="paper" id='labelPaper'>Paper (max: 1Mo) : <br/><strong> (must be in pdf format) </strong></label><br />
-                    <input type="file" name="paperSubmitted" />
+                    <input type="file" name="paperSubmitted" required/>
                 <br />
                 <?php 
                 if (isset($_GET['error']))
@@ -81,17 +83,21 @@
                     $e =  $_GET['error'];
                     if ($e == 1)
                     {
-                        echo "<strong style='color: red';>Invalid format</strong>";
+                        echo "<strong style='color: red';>Invalid format</strong></br>";
                     }
                     if ($e == 2)
                     {
                         echo "<strong style='color: red';>File too big</strong></br>"; 
                     }
+                    if ($e == 3)
+                    {
+                        echo "<strong style='color: red';>There is no file or there has been an error</strong></br>";
+                    }
                 }
                 
                 
                 ?>
-                <input type="submit" value="Submit ! "name = 'submit' class="submitPaperButton" />
+                <input type="submit" value="Submit ! "name = 'submit' id="submitPaperButton" />
                 </div>
         </form>
         </fieldset>        
