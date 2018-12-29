@@ -48,6 +48,17 @@
                         <option value="Computer Science">Computer Science</option>
                     </select>
                 <br />  
+                <label for='language'><b>Field :</b></label>
+                    <select name="language" id = 'language' required>
+                        <option selected ='selected' disabled value="" >Choose a language ...</option>
+                        <option value="0">Original scan (whatever language)</option>
+                        <option value="1">English</option>
+                        <option value="2">German</option>
+                        <option value="3">French</option>
+                        <option value="4">Deutch</option>
+                        <option value="5">Latin</option>
+                    </select>
+                <br /> 
                 <label for='authorID'><b>Select the author : </b></label>
                     <select name="authorID"id = 'authorID' required>
                         <option selected ='selected' disabled value="" required>Choose an author ...</option>
@@ -75,7 +86,7 @@
                 <br />
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />    
                     <label for="paper" id='labelPaper'>Paper (max: 1Mo) : <br/><strong> (must be in pdf format) </strong></label><br />
-                    <input type="file" name="paperSubmitted" required/>
+                    <input type="file" name="paperSubmitted" />
                 <br />
                 <?php 
                 if (isset($_GET['error']))

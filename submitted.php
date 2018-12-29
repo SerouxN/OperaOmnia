@@ -29,18 +29,21 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 					die('Error : '.$e->getMessage());
 			}
 			
-			$last_id = $db->query('SELECT max(ID) FROM submits');
-			$last_id = $last_id -> fetch();
-			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' . basename($last_id[0] + 1).'.pdf');
-			 $req = $db->prepare('INSERT INTO submits( AuthorID, Title, Summary, Year, Field) 
-			 		VALUES(:AuthorID, :Title, :Summary, :Year, :Field)');
+			 $req = $db->prepare('INSERT INTO submits( AuthorID, Title, Summary, language, Year, Field) 
+			 		VALUES(:AuthorID, :Title, :Summary, :Language, :Year, :Field)');
 			$req->execute(array(
 				'AuthorID' => $_POST['authorID'],
 				'Title' => $_POST['title'],
 				'Summary' => $_POST['summary'],
+				'Language' => $_POST['language'],
 				'Year' => $_POST['year'],
 				'Field' => $_POST['field']
 			));
+
+			$last_id = $db->prepare('SELECT ID FROM submits WHERE title = ?' );
+			$last_id->execute(array($_POST['title']));
+			$last_id = $last_id -> fetch();
+			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' . basename($last_id[0]).'.pdf');
 
 			echo "<section> 
 					<h1>Thank you for submitting a paper</h1>

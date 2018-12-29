@@ -58,7 +58,7 @@
                 <th>Title</th>
                 <th>Year</th>
                 <th>Field</th>
-                </tr>
+            </tr>
             <?php
                 $chosenMethod='Title';
                 $order = " ";
