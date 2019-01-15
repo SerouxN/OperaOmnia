@@ -15,21 +15,31 @@ $r->execute(array($_POST['title']));
 $oldname = $r->fetch();
 $oldname = 'submits/'.$oldname[0].'.pdf';
 
-if ($_POST['decision'] == 'accept')
+if ($_POST['decision'] == 'Accept')
 {
-    // $req = $db->prepare('INSERT INTO papers(AuthorID, Title,  Year, Description, Language,Field, Major) 
-    // VALUES(:AuthorID, :Title, :Year,    :Description, :Language, :Field, :Major)');
-    // $req->execute(array(
-    // 'AuthorID' => $_POST['authorID'],
-    // 'Title' => $_POST['title'],
-    // 'Year' => $_POST['year'],
-    // 'Description' => $_POST['summary'],
-    // 'Language' => $_POST['language'],
-    // 'Field' => $_POST['field'],
-    // 'Major' => 0));
-    $newId = $db->query('SELECT max(ID) FROM papers');
-    $newId = $newId->fetch();
-    $newname = 'papers/'.strval($newId[0] + 1).'_'.strval($_POST['language']).'.pdf';
+    $usedIDs = $db->query('SELECT ID FROM papers');
+    $ID=sprintf('%010d', rand(0,9999999999));
+    		while ($usedID = $usedIDs->fetch())
+    		{
+        	if ($usedID==$ID)
+       		 {
+            	$usedID = $db->query('SELECT * FROM papers');
+           		 $ID=sprintf('%09d', rand(0,999999999));
+        		}
+    			}
+    $req = $db->prepare('INSERT INTO papers(ID,AuthorID, Title,  Year, Description,Field, Major, Format) 
+     VALUES(:ID, :AuthorID, :Title, :Year,    :Description, :Field, :Major, :Format)');
+     $req->execute(array(
+         'ID'=>$ID,
+     'AuthorID' => $_POST['authorID'],
+     'Title' => $_POST['title'],
+     'Year' => $_POST['year'],
+     'Description' => $_POST['summary'],
+     'Field' => $_POST['field'],
+     'Major' => 0,
+    'Format'=>0));
+
+    $newname = 'papers/'.$ID.'_'.strval($_POST['language']).'.pdf';
     rename($oldname, $newname);
     $r = $db->query("DELETE FROM submits WHERE Title = '".$_POST['title']."'");
 }

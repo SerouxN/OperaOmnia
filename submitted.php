@@ -14,7 +14,7 @@
 if ($_FILES['paperSubmitted']['error'] == 0)
 
 {
-	if ($_FILES['paperSubmitted']['size'] <= 1000000)
+	if ($_FILES['paperSubmitted']['size'] <= 10000000)
 	{
 		if (pathinfo($_FILES['paperSubmitted']['name'])['extension'] == 'pdf')
 		{			
@@ -28,10 +28,21 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 			{
 					die('Error : '.$e->getMessage());
 			}
-			
-			 $req = $db->prepare('INSERT INTO submits( AuthorID, Title, Summary, language, Year, Field) 
-			 		VALUES(:AuthorID, :Title, :Summary, :Language, :Year, :Field)');
+			$usedIDs = $db->query('SELECT ID FROM papers');
+    		$ID=sprintf('%010d', rand(0,9999999999));
+    		while ($usedID = $usedIDs->fetch())
+    		{
+        	if ($usedID==$ID)
+       		 {
+            	$usedID = $db->query('SELECT * FROM papers');
+           		 $ID=sprintf('%09d', rand(0,999999999));
+        		}
+    			}
+    $newname = 'papers/'.$ID.'_'.strval($_POST['language']).'.pdf';
+			 $req = $db->prepare('INSERT INTO submits(ID, AuthorID, Title, Summary, language, Year, Field) 
+			 		VALUES(:ID,:AuthorID, :Title, :Summary, :Language, :Year, :Field)');
 			$req->execute(array(
+				'ID'=> $ID,
 				'AuthorID' => $_POST['authorID'],
 				'Title' => $_POST['title'],
 				'Summary' => $_POST['summary'],

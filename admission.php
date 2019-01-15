@@ -49,11 +49,11 @@
             <input type='hidden' name='language' value = '".$data['language']."'/>
             <input type='hidden' name='year' value = '".$data['Year']."'/>
             <input type='hidden' name='field' value = '".$data['Field']."'/>
-            <input type='submit' value= 'accept' name = 'decision'  />
-            <input type='submit' value= 'decline' name = 'decision'  />
+            <input type='submit' value= 'Accept' name = 'decision'  />
+            <input type='submit' value= 'Decline' name = 'decision'  />
             </form>
             </td></tr>";
-            
+
         }
 
         ?>         

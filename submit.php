@@ -48,7 +48,7 @@
                         <option value="Computer Science">Computer Science</option>
                     </select>
                 <br />  
-                <label for='language'><b>Field :</b></label>
+                <label for='language'><b>Language :</b></label>
                     <select name="language" id = 'language' required>
                         <option selected ='selected' disabled value="" >Choose a language ...</option>
                         <option value="0">Original scan (whatever language)</option>
