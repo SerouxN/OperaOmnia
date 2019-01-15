@@ -23,8 +23,9 @@ if ($_POST['decision'] == 'Accept')
     		{
         	if ($usedID==$ID)
        		 {
-            	$usedID = $db->query('SELECT * FROM papers');
-           		 $ID=sprintf('%09d', rand(0,999999999));
+                $usedID = $db->query('SELECT * FROM papers');
+                $ID=rand(0,999999999);
+           		 $ID=sprintf('%09d', $ID);
         		}
     			}
     $req = $db->prepare('INSERT INTO papers(ID,AuthorID, Title,  Year, Description,Field, Major, Format) 
@@ -48,4 +49,12 @@ else
     $r = $db->query("DELETE FROM submits WHERE Title = '".$_POST['title']."'");
     unlink($oldname);
 }
+function Redirect($url, $permanent = false)
+{
+    header('Location: ' . $url, true, $permanent ? 301 : 302);
+
+    exit();
+}
+
+Redirect('admission.php', false);
 ?>
