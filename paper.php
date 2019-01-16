@@ -263,6 +263,7 @@
             }
             ?>
             <p><br/>File names displayed in bold correspond to versions of the papers made by <em>Opera Omnia</em>.</p>
+            <p>Click <a href='newVersion.php?id=<?php echo $_GET['id']?>'>here</a> if you want to add a version of this paper to <em>Opera Omnia</em>.</p>
         </section>
         <?php include("footer.php"); ?>
     </body>

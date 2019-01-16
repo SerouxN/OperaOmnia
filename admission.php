@@ -9,6 +9,7 @@
     <?php include("header.php"); ?>
     <section>
         <h1>Admissons (only staff)</h1>
+        New papers
         <table id = 'authList'> 
             <tr>
                 <th> Author (ID) </th>
@@ -48,6 +49,46 @@
             <input type='hidden' name='language' value = '".$data['language']."'/>
             <input type='hidden' name='year' value = '".$data['Year']."'/>
             <input type='hidden' name='field' value = '".$data['Field']."'/>
+            <input type='submit' value= 'Accept' name = 'decision'  />
+            <input type='submit' value= 'Decline' name = 'decision'  />
+            </form>
+            </td></tr>";
+
+        }
+
+        ?>         
+        </table>
+        New versions of existing papers:
+        <table id = 'authList'> 
+            <tr>
+                <th> Language </th>
+                <th>Paper</th>
+                <th>Decision</th>
+            </tr>
+            
+        <?php       
+        // ATTENTION, potentielle faille injection à corriger
+        // TODO : Permttre la modification des champs
+        try
+        {
+            $db = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch(Exception $e)
+        {
+                die('Error : '.$e->getMessage());
+        } 
+        $resp2 = $db->query('SELECT * FROM submitversion');
+        while ($data = $resp2->fetch())
+        {
+            $resp3=$db->query('SELECT Title FROM papers WHERE ID='. $data['paperID']);
+            echo "<tr><td>".$data['Language']."</td><td>".$resp3->fetch()[0]."</td>";
+            //bricolage puissance 189
+            echo "<td> 
+            <form action = 'verAdmissible.php' method='post'>
+            <input type='hidden' name='id' value = '".$data['ID']."'/>
+            <input type='hidden' name='paperID' value = '".$data['paperID']."'/>
+            <input type='hidden' name='language' value = '".$data['Language']."'/>
             <input type='submit' value= 'Accept' name = 'decision'  />
             <input type='submit' value= 'Decline' name = 'decision'  />
             </form>
