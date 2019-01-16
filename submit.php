@@ -17,7 +17,7 @@
     <?php include("header.php"); ?>
     <section class='sectionSubmit'>
         <h1>Submit a paper</h1>
-        
+        <p>If you want to add a new version to a paper already hosted on <em>Opera Omnia</em>, go to that paper's page.</p>
         <fieldset class = "submitPaper">
         <legend> Become a cool man and submit a paper </legend>
         <form action="submitted.php" enctype="multipart/form-data" method="post">
