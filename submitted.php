@@ -28,21 +28,17 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 			{
 					die('Error : '.$e->getMessage());
 			}
-			$usedIDs = $db->query('SELECT ID FROM papers');
-    		$ID=sprintf('%010d', rand(0,9999999999));
-    		while ($usedID = $usedIDs->fetch())
-    		{
-        	if ($usedID==$ID)
-       		 {
-            	$usedID = $db->query('SELECT * FROM papers');
-           		 $ID=sprintf('%09d', rand(0,999999999));
-        		}
-    			}
-    $newname = 'papers/'.$ID.'_'.strval($_POST['language']).'.pdf';
-			 $req = $db->prepare('INSERT INTO submits(ID, AuthorID, Title, Summary, language, Year, Field) 
+			$numSubmitted=0;
+			$reponse=$db->query('SELECT * FROM submits');
+			while ($data = $reponse->fetch())
+			{
+				$numSubmitted=$numSubmitted+1;
+			}
+			$numSubmitted=$numSubmitted+1;
+			 $req = $db->prepare('INSERT INTO submits(ID,AuthorID, Title, Summary, language, Year, Field) 
 			 		VALUES(:ID,:AuthorID, :Title, :Summary, :Language, :Year, :Field)');
 			$req->execute(array(
-				'ID'=> $ID,
+				'ID' => $numSubmitted,
 				'AuthorID' => $_POST['authorID'],
 				'Title' => $_POST['title'],
 				'Summary' => $_POST['summary'],
@@ -51,10 +47,12 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 				'Field' => $_POST['field']
 			));
 
-			$last_id = $db->prepare('SELECT ID FROM submits WHERE title = ?' );
-			$last_id->execute(array($_POST['title']));
-			$last_id = $last_id -> fetch();
-			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' . basename($last_id[0]).'.pdf');
+			//$last_id = $db->prepare('SELECT ID FROM submits WHERE title = ?' );
+			//$last_id->execute(array($_POST['title']));
+			//$last_id = $last_id -> fetch();
+			
+			
+			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' .basename($numSubmitted) .'.pdf');
 
 			echo "<section> 
 					<h1>Thank you for submitting a paper</h1>

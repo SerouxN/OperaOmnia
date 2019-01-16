@@ -85,7 +85,7 @@
                     </select >
                 <br />
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />    
-                    <label for="paper" id='labelPaper'>Paper (max: 1Mo) : <br/><strong> (must be in pdf format) </strong></label><br />
+                    <label for="paper" id='labelPaper'>Paper (max: 10Mo) : <br/><strong> (must be in pdf format) </strong></label><br />
                     <input type="file" name="paperSubmitted" />
                 <br />
                 <?php 

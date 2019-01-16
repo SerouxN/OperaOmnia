@@ -11,7 +11,6 @@
         <h1>Admissons (only staff)</h1>
         <table id = 'authList'> 
             <tr>
-                <th> ID </th>
                 <th> Author (ID) </th>
                 <th> Title </th>
                 <th> Summary </th>
@@ -38,7 +37,7 @@
         {
             $r = $db->query("SELECT LastName FROM authors WHERE ID =".$data['AuthorID']."");
             $autName = $r->fetch();
-            echo "<tr><td>".$data['ID']."</td><td>".$data['AuthorID']." (".$autName[0].")</td><td>".$data['Title']."</td><td>".$data['Summary']."</td><td>"
+            echo "<tr><td>".$data['AuthorID']." (".$autName[0].")</td><td>".$data['Title']."</td><td>".$data['Summary']."</td><td>"
             .$data['language']."</td><td>".$data['Year']."</td><td>".$data['Field']."</td>";
             //bricolage puissance 189
             echo "<td> 

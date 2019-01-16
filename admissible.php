@@ -10,7 +10,7 @@ catch(Exception $e)
         die('Error : '.$e->getMessage());
 }
 
-$r = $db->prepare('SELECT ID FROM submits WHERE title = ?');
+$r = $db->prepare('SELECT * FROM submits WHERE title = ?');
 $r->execute(array($_POST['title']));
 $oldname = $r->fetch();
 $oldname = 'submits/'.$oldname[0].'.pdf';
@@ -24,8 +24,8 @@ if ($_POST['decision'] == 'Accept')
         	if ($usedID==$ID)
        		 {
                 $usedID = $db->query('SELECT * FROM papers');
-                $ID=rand(0,999999999);
-           		 $ID=sprintf('%09d', $ID);
+                $ID=rand(0,9999999999);
+           		 $ID=sprintf('%10d', $ID);
         		}
     			}
     $req = $db->prepare('INSERT INTO papers(ID,AuthorID, Title,  Year, Description,Field, Major, Format) 
@@ -39,7 +39,7 @@ if ($_POST['decision'] == 'Accept')
      'Field' => $_POST['field'],
      'Major' => 0,
     'Format'=>0));
-
+    
     $newname = 'papers/'.$ID.'_'.strval($_POST['language']).'.pdf';
     rename($oldname, $newname);
     $r = $db->query("DELETE FROM submits WHERE Title = '".$_POST['title']."'");
