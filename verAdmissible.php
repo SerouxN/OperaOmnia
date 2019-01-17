@@ -10,12 +10,19 @@ catch(Exception $e)
         die('Error : '.$e->getMessage());
 }
 
-$oldname = 'submits/'.basename($_POST['id']).'.pdf';
+$oldname = 'submits/ver'.basename($_POST['id']).'.pdf';
 
 if ($_POST['decision'] == 'Accept')
 {
     $r1=$db->query('SELECT * FROM papers WHERE ID='. $_POST['paperID']);
-    $newname = 'papers/'.$_POST['paperID'].'_'.strval($_POST['language']).'.pdf';
+    $char=['b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    $newname = 'papers/'.$_POST['paperID'].'_'.strval($_POST['language']).'a.pdf';
+    $i=0;
+    while(file_exists($newname))
+    {
+        $newname = 'papers/'.$_POST['paperID'].'_'.strval($_POST['language']).(string)$char[$i].'.pdf';
+        $i++;
+    }
     rename($oldname, $newname);
     $r = $db->query("DELETE FROM submitversion WHERE ID = '".$_POST['id']."'");
 }

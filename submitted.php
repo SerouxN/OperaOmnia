@@ -32,7 +32,10 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 			$reponse=$db->query('SELECT * FROM submits');
 			while ($data = $reponse->fetch())
 			{
-				$numSubmitted=$numSubmitted+1;
+				if($data['ID']>$numSubmitted)
+				{
+					$numSubmitted=$data['ID'];
+				}
 			}
 			$numSubmitted=$numSubmitted+1;
 			 $req = $db->prepare('INSERT INTO submits(ID,AuthorID, Title, Summary, language, Year, Field) 
@@ -52,7 +55,7 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 			//$last_id = $last_id -> fetch();
 			
 			
-			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/' .basename($numSubmitted) .'.pdf');
+			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/paper' .basename($numSubmitted) .'.pdf');
 
 			echo "<section> 
 					<h1>Thank you for submitting a paper</h1>

@@ -55,7 +55,7 @@
                         <option value="1">English</option>
                         <option value="2">German</option>
                         <option value="3">French</option>
-                        <option value="4">Deutch</option>
+                        <option value="4">Dutch</option>
                         <option value="5">Latin</option>
                     </select>
                 <br /> 

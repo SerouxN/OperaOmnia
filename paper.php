@@ -13,11 +13,22 @@
                     die('Erreur : '.$e->getMessage());
             }
             $reponse = $bdd->query('SELECT * FROM papers WHERE ID='. $_GET['id']);
+            $n=0;
             while ($data = $reponse->fetch())
             {
                 $title=$data['Title'];
                 $description=$data['Description'];
                 $AuthID=$data['AuthorID'];
+                $n++;
+            }
+            if($n==0)
+            {
+                function Redirect($url, $permanent = false)
+                    {
+                        header('Location: ' . $url, true, $permanent ? 301 : 302);
+                        exit();
+                    }
+                Redirect('index.php', false);
             }
             $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID='. $AuthID);
             while ($data = $reponse2->fetch())
@@ -46,7 +57,7 @@
     </head>
     <body>   
         <?php include("header.php"); ?>
-        <section>
+        <section style="padding-left:50px; padding-right:50px;">
             <h1><strong><?php echo $title ?></strong><?php echo" by ". $AuthFirstName." ".$AuthLastName;?></h1>
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;Description</h2>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $description ?></p>

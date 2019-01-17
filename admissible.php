@@ -13,7 +13,7 @@ catch(Exception $e)
 $r = $db->prepare('SELECT * FROM submits WHERE title = ?');
 $r->execute(array($_POST['title']));
 $oldname = $r->fetch();
-$oldname = 'submits/'.$oldname[0].'.pdf';
+$oldname = 'submits/paper'.$oldname[0].'.pdf';
 
 if ($_POST['decision'] == 'Accept')
 {
@@ -39,8 +39,15 @@ if ($_POST['decision'] == 'Accept')
      'Field' => $_POST['field'],
      'Major' => 0,
     'Format'=>0));
-    
-    $newname = 'papers/'.$ID.'_'.strval($_POST['language']).'.pdf';
+    $char=['b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    $newname = 'papers/'.$ID.'_'.strval($_POST['language']).'a.pdf';
+    $i=0;
+    while(file_exists($newname))
+    {
+        $newname = 'papers/'.$ID.'_'.strval($_POST['language']).(string)$char[$i].'.pdf';
+        $i++;
+    }
+    var_dump($newname);
     rename($oldname, $newname);
     $r = $db->query("DELETE FROM submits WHERE Title = '".$_POST['title']."'");
 }
