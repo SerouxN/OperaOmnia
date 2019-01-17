@@ -810,3 +810,15 @@ h1 strong
 {
     margin: 10px;
 }
+.paperCont {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .textCont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: black;
+    transform: translate(-50%, -50%);
+  }
