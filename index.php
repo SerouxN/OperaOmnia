@@ -41,7 +41,7 @@
     <p style ="margin-left: 5px; margin-right:5px;"> A small index for great scientific papers. </p>
     <section>
       <div class="menuSubject" style="margin: auto;">
-        <div class = "lastPapers"><strong>Last Papers added</strong></div>
+        <div style="padding:10px;" class = "lastPapers"><strong>Last Papers added</strong></div>
         <?php
           try
           {

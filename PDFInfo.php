@@ -71,7 +71,8 @@ class PDFInfo
 				$i++;
 			}
 		}
-		
+		if(isset($out[0]))
+		{
 		if ($out[0] == chr(254))
 		{
 			$enc = 'UTF-16';
@@ -80,7 +81,11 @@ class PDFInfo
 		{
 			$enc = mb_detect_encoding($out);
 		}
-
+	}
+	else
+	{
+		$enc = mb_detect_encoding($out);
+	}
 		return iconv($enc, 'UTF-8', $out);
 	}
 }

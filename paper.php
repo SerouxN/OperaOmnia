@@ -66,7 +66,7 @@
                 $numberOfVersions=0;
                 foreach (glob("papers/". $_GET['id']."_*") as $filename) 
                 {
-                    $numberOfVersions=$numberOfVersions +1;
+                    $numberOfVersions=$numberOfVersions+1;
                 }
                 if ($numberOfVersions==0)
                 {
@@ -74,7 +74,7 @@
                 }
                 else if (($numberOfVersions==1))
                 {
-                    echo "There is only <strong>".$numberOfVersions."</strong> version of this paper available on <em>Opera Omnia</em>.";
+                    echo "There is only <strong>1</strong> version of this paper available on <em>Opera Omnia</em>.";
                     ?>
                     <table width="90%" id=
                     <?php 
@@ -98,14 +98,14 @@
                         </tr>
                             <?php
                                 include 'PDFInfo.php';
-                                foreach (glob("papers/". $_GET['id']."_*") as $filename) 
+                                foreach (glob("papers/". basename($_GET['id']."_*")) as $filename) 
                                 {
                                     $homeMade=0;
                                     $paper = new PDFInfo;
                                     $paper->load($filename);
-                                    $fileTitle="";
+                                    $fileTitle=$title;
                                     $fileTitle=$paper->title;
-                                    if($fileTitle=="Untitled")
+                                    if($fileTitle=="Untitled" || strlen($fileTitle)==0)
                                     {
                                         $fileTitle=$title;
                                     }
@@ -121,7 +121,8 @@
                                             $homeMade=0;
                                         }
                                         $version=substr($filename, -6, 1);
-                                    }?>
+                                    }
+?>
                             <tr>
                                     <?php 
                                     if ($homeMade==1)
@@ -201,9 +202,9 @@
                                 foreach (glob("papers/". $_GET['id']."_*") as $filename) 
                                 {
                                     $homeMade=0;
+                                    $fileTitle="";
                                     $paper = new PDFInfo;
                                     $paper->load($filename);
-                                    $fileTitle="";
                                     $fileTitle=$paper->title;
                                     if($fileTitle=="Untitled")
                                     {
