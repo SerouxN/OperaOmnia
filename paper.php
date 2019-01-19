@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
         <?php
-        $field=0; //0: maths, 1:compsci, 2:physics
+            $field=0; //0: maths, 1:compsci, 2:physics
             try
             {
                 $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
@@ -24,10 +26,10 @@
             if($n==0)
             {
                 function Redirect($url, $permanent = false)
-                    {
-                        header('Location: ' . $url, true, $permanent ? 301 : 302);
-                        exit();
-                    }
+                {
+                    header('Location: ' . $url, true, $permanent ? 301 : 302);
+                    exit();
+                }
                 Redirect('index.php', false);
             }
             $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID='. $AuthID);
@@ -54,6 +56,15 @@
         <title>Opera Omnia - <?php echo $data['Title']?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta charset="utf-8"/>
+        <script>
+            jQuery(document).ready(function($) 
+            {
+                $(".clickable-row").click(function() 
+                {
+                    window.location = $(this).data("href");
+                });
+            });
+        </script>
     </head>
     <body>   
         <?php include("header.php"); ?>
@@ -74,8 +85,7 @@
                 }
                 else if (($numberOfVersions==1))
                 {
-                    echo "There is only <strong>1</strong> version of this paper available on <em>Opera Omnia</em>.";
-                    ?>
+                    echo "There is only <strong>1</strong> version of this paper available on <em>Opera Omnia</em>.";?>
                     <table width="90%" id=
                     <?php 
                         if ($field==0)
@@ -94,7 +104,6 @@
                         <tr>
                             <th>Title</th>
                             <th>Version</th>
-                            <th>Link</th>
                         </tr>
                             <?php
                                 include 'PDFInfo.php';
@@ -121,9 +130,8 @@
                                             $homeMade=0;
                                         }
                                         $version=substr($filename, -6, 1);
-                                    }
-?>
-                            <tr>
+                                    }?>
+                            <tr  class='clickable-row' data-href='<?php echo $filename?>'>
                                     <?php 
                                     if ($homeMade==1)
                                     {?>
@@ -135,6 +143,7 @@
                                         <td id="paperTitle"><?php echo $fileTitle ?></td>
                                     <?php
                                     }?>
+
                             <td id="version"><?php 
                                 if ($version ==0)
                                 {
@@ -144,7 +153,7 @@
                                 {
                                     echo "English";
                                 }    
-                                elseif ($version ==2)
+                                elseif ($version==2)
                                 {
                                     echo "German";
                                 } 
@@ -164,9 +173,7 @@
                                 {
                                     echo "Portuguese";
                                 } 
-                            ?></td>
-                            <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
-                        </tr>
+                            ?></td></tr>
                     <?php
                     }
                     ?>
@@ -176,6 +183,7 @@
                 else
                 {
                     echo "There are <strong>".$numberOfVersions."</strong> different versions of this paper available on <em>Opera Omnia</em>.";
+                   
                     ?>
                     <table width="90%" id=
                     <?php 
@@ -195,7 +203,6 @@
                         <tr>
                             <th>Title</th>
                             <th>Version</th>
-                            <th>Link</th>
                         </tr>
                             <?php
                                 include 'PDFInfo.php';
@@ -222,8 +229,12 @@
                                             $homeMade=0;
                                         }
                                         $version=substr($filename, -6, 1);
+                                        if(is_numeric($version)==false)
+                                        {
+                                            $version=substr($filename, -7, 1);
+                                        }
                                     }?>
-                            <tr>
+                            <tr  class='clickable-row' data-href='<?php echo $filename?>'>
                                     <?php 
                                     if ($homeMade==1)
                                     {?>
@@ -265,8 +276,7 @@
                                     echo "Portuguese";
                                 }  
                             ?></td>
-                            <td><a  id="goLink" href=<?php echo $filename?>>Go</a></td>
-                        </tr>
+                             </tr>
                     <?php
                     }
                     ?>
