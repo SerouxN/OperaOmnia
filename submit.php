@@ -38,7 +38,7 @@
                 <br />
                     <label for='summary'> <b>Small Description :</b></label>
                 <br />
-                    <input type ='text' name='summary' required />
+                <textarea name='summary' rows="6" cols="60" style="resize:none;"></textarea>
                 <br />
                     <label for='Field'><b>Field :</b></label>
                     <select name="field" id = 'field' required>
@@ -87,21 +87,22 @@
 
                         <fieldset id = 'addAuthor' style='width: 50%;'>
                             <legend> If OperaOmnia does not have the author of the paper you want to submit, you may add it : </legend>
-                                <label class = 'submitPaper_content' for='fname'> <b>First Name :</b> </label> 
+                                <label class = 'submitPaper_content' for='fname' required> <b>First Name :</b> </label> 
                                 <input size = "20"type='text' name='authorFname' id ='fname' />
-                                </br>
+                                <br />
                                 <label class = 'submitPaper_content' for='lname'> <b>Last Name :</b> </label> 
                                 <input size = "20"type='text' name='authorLname' id ='lname' />
-                                </br>
+                                <br />
                                 <label for='authorBirth'> <b>Date of Birthday :</b> </label>
                                 <input type="date" name="authorBirth" > 
-                                </br>
+                                <br />
                                 <label for='authorDeath'> <b>Date of death :</b> </label>
                                 <input type="date" name="authorDeath" soze = '20' >
-                                </br>
-                                <label class = 'submitPaper_content' for='bio'> <b>Biography : </b> </label> 
-                                <input size = "50 "type='text' name='authorBio' id ='bio' />
-                                </br>
+                                <br />
+                                <label class = 'submitPaper_content' for='bio'> <b>Biography : </b> </label>
+                                <br/>
+                                <textarea name='authorBio' id="bio" rows="6" cols="60" style="resize:none;"></textarea>
+                                <br />
                                 <label for='authorField'><b>Field :</b></label>
                                 <select name="authorField" id = 'field' >
                                     <option selected ='selected' disabled value="" >Choose a field ...</option>
