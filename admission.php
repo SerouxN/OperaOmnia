@@ -9,7 +9,7 @@
     <?php include("header.php"); ?>
     <section>
         <h1>Admissons (staff only)</h1>
-        New papers
+        <h3> New papers </h3>
         <table id = 'authList'> 
             <tr>
                 <th> Author (ID) </th>
@@ -59,8 +59,8 @@
         ?>         
         </table>
         </section>
-        <!-- <section>  
-        </br> New versions of existing papers:
+        <section>  
+        </br> <h3>New versions of existing papers :</h3>
         <table id = 'authList'> 
             <tr>
                 <th> Language </th>
@@ -69,29 +69,29 @@
             </tr>
             
         <?php       
-        // ATTENTION, potentielle faille injection à corriger
-        // TODO : Permttre la modification des champs
-        // $resp2 = $db->query('SELECT * FROM submitversion');
-        // while ($data = $resp2->fetch())
-        // {
-        //     $resp3=$db->query('SELECT Title FROM papers WHERE ID='. $data['paperID']);
-        //     echo "<tr><td>".$data['Language']."</td><td>".$resp3->fetch()[0]."</td>";
-        //     //bricolage puissance 189
-        //     echo "<td> 
-        //     <form action = 'verAdmissible.php' method='post'>
-        //     <input type='hidden' name='id' value = '".$data['ID']."'/>
-        //     <input type='hidden' name='paperID' value = '".$data['paperID']."'/>
-        //     <input type='hidden' name='language' value = '".$data['Language']."'/>
-        //     <input type='submit' value= 'Accept' name = 'decision'  />
-        //     <input type='submit' value= 'Decline' name = 'decision'  />
-        //     </form>
-        //     </td></tr>";
+        //ATTENTION, potentielle faille injection à corriger
+        //TODO : Permttre la modification des champs
+        $resp2 = $db->query('SELECT * FROM submitversion');
+        while ($data = $resp2->fetch())
+        {
+            $resp3=$db->query('SELECT Title FROM papers WHERE ID='. $data['paperID']);
+            echo "<tr><td>".$data['Language']."</td><td>".$resp3->fetch()[0]."</td>";
+            //bricolage puissance 189
+            echo "<td> 
+            <form action = 'verAdmissible.php' method='post'>
+            <input type='hidden' name='id' value = '".$data['ID']."'/>
+            <input type='hidden' name='paperID' value = '".$data['paperID']."'/>
+            <input type='hidden' name='language' value = '".$data['Language']."'/>
+            <input type='submit' value= 'Accept' name = 'decision'  />
+            <input type='submit' value= 'Decline' name = 'decision'  />
+            </form>
+            </td></tr>";
 
-        // }
+        }
 
         ?>         
         </table>
-    </section> --> 
+    </section> 
     <section>
         <h3> Add an author : </h3> 
         <form action="autAdmissible.php"  method="post">
@@ -111,7 +111,7 @@
             <label class = 'submitPaper_content' for='bio'> <b>Biography : </b> </label> 
             <input size = "50 "type='text' name='bio' id ='bio' required/>
             </br>
-            <label for='Field'><b>Field :</b></label>
+            <label for='field'><b>Field :</b></label>
             <select name="field" id = 'field' required>
                 <option selected ='selected' disabled value="" >Choose a field ...</option>
                 <option value="Physics">Physics</option>
@@ -132,21 +132,20 @@
                 <th> Field </th>
             </tr>
             <?php
-            $resp = $db->query('SELECT * FROM submits');
+        $resp = $db->query('SELECT * FROM autsubmits');
         while ($data = $resp->fetch() )
         {
-            $r = $db->query("SELECT LastName FROM authors WHERE ID =".$data['AuthorID']."");
-            $autName = $r->fetch();
-            echo "<tr><td>".$data['AuthorID']." (".$autName[0].")</td><td>".$data['Title']."</td><td>".$data['Summary']."</td><td>"
-            .$data['language']."</td><td>".$data['Year']."</td><td>".$data['Field']."</td>";
+
+            echo "<tr><td>".$data['firstName']."</td><td>".$data['lastName']."</td><td>".$data['birthday']."</td><td>"
+            .$data['dateOfDeath']."</td><td>".$data['Bio']."</td><td>".$data['Field']."</td>";
             //bricolage puissance 189
             echo "<td> 
-            <form action = 'papAdmissible.php' method='post'>
-            <input type='hidden' name='authorID' value = '".$data['AuthorID']."'/>
-            <input type='hidden' name='title' value = '".$data['Title']."'/>
-            <input type='hidden' name='summary' value = '".$data['Summary']."'/>
-            <input type='hidden' name='language' value = '".$data['language']."'/>
-            <input type='hidden' name='year' value = '".$data['Year']."'/>
+            <form action = 'autAdmissible.php' method='post'>
+            <input type='hidden' name='fname' value = '".$data['firstName']."'/>
+            <input type='hidden' name='lname' value = '".$data['lastName']."'/>
+            <input type='hidden' name='birth' value = '".$data['birthday']."'/>
+            <input type='hidden' name='death' value = '".$data['dateOfDeath']."'/>
+            <input type='hidden' name='bio' value = '".$data['Bio']."'/>
             <input type='hidden' name='field' value = '".$data['Field']."'/>
             <input type='submit' value= 'Accept' name = 'decision'  />
             <input type='submit' value= 'Decline' name = 'decision'  />

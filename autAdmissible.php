@@ -24,4 +24,6 @@ $req->execute(array(
    'Field' => $_POST['field']
 ));
 
+header('Location: submit.php?error='.$error);
+exit();	
 ?>
