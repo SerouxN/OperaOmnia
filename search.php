@@ -62,7 +62,34 @@
 		if (!(empty($_POST['title'])))
 		{
 		?>
-		<table id="authList" width="100%" style ="margin= 6px;">
+		 <table id="authList" width="90%">
+		<tr>
+			<th> Title </th>
+			<th> Author </th>
+			<th> Date of publication </th>
+			<th> Field </th>
+			<th> Link </th>
+		</tr>
+		<?php 
+			while ($data = $reponse->fetch())
+			{
+
+				echo ('<tr>');
+				echo ('<td>'.$data['Title'].'</td>');
+				$author = $bdd->query('SELECT LastName FROM authors WHERE ID =\''.$data['AuthorID'].'\'');
+				$author = $author->fetch();
+				echo ('<td>'.$author[0].'</td>');
+				echo ('<td>'.$data['Year'].'</td>');
+				echo ('<td>'.$data['Field'].'</td>');
+				echo('<td><a id="goLink" href="paper?id='.$data['ID'].'"><p>Go</p></a></td>');
+				echo ('</tr>');
+			}
+		}
+		else
+		{
+			$query="SELECT * FROM papers";
+			$reponse = $bdd->query($query);?>
+			 <table id="authList" width="90%">
 		<tr>
 			<th> Title </th>
 			<th> Author </th>

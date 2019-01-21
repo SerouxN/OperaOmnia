@@ -28,8 +28,8 @@
             <fieldset>
             <legend><b>Search a paper :</b></legend>
                     <legend><b></b></legend>
-                    <label for="name">Title:</label>
-                    <input type="text" name="name" id="name"<?php if(isset($_POST['name'])){echo "value=\"".$_POST['name']."\"";}?>/>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="name"<?php if(isset($_POST['title'])){echo "value=\"".$_POST['title']."\"";}?>/>
                     <div id="selectField">
                         <p>Only show papers and books about:</p>
                         <input type="checkbox" name="field[]" value="Physics" <?php if(isset($_POST['field']) && in_array("Physics", $_POST['field'])){echo 'checked';}?>>Physics<br>
@@ -55,6 +55,7 @@
     <div style="overflow-x:auto;">
             <table id="authList" width="90%">
             <tr>
+                <th>Author</th>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Field</th>
@@ -77,58 +78,40 @@
                         die('Erreur : '.$e->getMessage());
                 }
                 $query="SELECT * FROM papers";
-                if(isset($_POST['title']) && !empty($_POST['title']))
+                if(!empty($_POST['title']) && isset($_POST['title']))
                 {
-                    $query.=" WHERE Title LIKE '%".strtoupper($_POST['title'])."%' ";
-                    if(isset($_POST['field']))
+                    $title = htmlspecialchars($_POST['title']);
+                    $query .=' WHERE Title LIKE \'%'.$title.'%\' ';
+                }
+                if(isset($_POST['field']))
+                {
+                    $field = $_POST['field'];
+                    if(!empty($_POST['title']) && isset($_POST['title']))
                     {
-                        $fieldWanted=$_POST['field'];
-                        if(!empty($fieldWanted))
-                        {
-                            $iterations=0;
-                            foreach($fieldWanted as $singleField)
-                            {
-                                if($iterations==0)
-                                {
-                                    $query.=" AND Field='".$singleField."'";
-                                }
-                                else
-                                {
-                                    $query.=" OR Field='".$singleField."'";
-                                }
-                                $iterations=$iterations+1;
-                            }
-                        }
+                    $query .='AND Field IN(\'';
+                    foreach($field as $individualField)
+                    {
+                    $query .= $individualField."','";
                     }
+                    $query .="placeholder')";
                 }
                 else
                 {
-                    if(isset($_POST['field']))
+                    $query .=' WHERE Field IN(\'';
+                    foreach($field as $individualField)
                     {
-                        $fieldWanted=$_POST['field'];
-                        if(!empty($fieldWanted))
-                        {
-                            $iterations=0;
-                            foreach($fieldWanted as $singleField)
-                            {
-                                if($iterations==0)
-                                {
-                                    $query.=" WHERE Field='".$singleField."'";
-                                }
-                                else
-                                {
-                                    $query.=" OR Field='".$singleField."'";
-                                }
-                                $iterations=$iterations+1;
-                            }
-                        }
+                    $query .= $individualField."','";
                     }
+                    $query .="placeholder')";
                 }
+            }
                 if (isset($_POST['order']))
                 {
                     $order = $_POST['order'];
                 }
                 $query.=" ORDER BY ". $chosenMethod ." ". $order;
+    
+
                 $reponse=$bdd->query($query);
                 $nResults=0;
                 while ($data = $reponse->fetch())
@@ -136,17 +119,23 @@
                     $nResults=$nResults+1;
             ?>
                 <tr class='clickable-row' data-href='paper.php?id=<?php echo $data['ID']?>'>
+                    <?php
+                    $query2="SELECT * FROM authors WHERE ID=".$data['AuthorID'];
+                    $reponse1=$bdd->query($query2);
+                    $dataAuthor=$reponse1->fetch();
+                    $authName=$dataAuthor['FirstName']." <strong>".$dataAuthor['LastName']."</strong>";?>
+                    <td><?php echo $authName;?></td>
                     <td id="authName"><?php echo $data['Title']?></td>
                     <td><?php echo $data['Year']?></td>
                     <td><?php echo $data['Field']?></td>
                 </tr>
-            <?php  
+            <?php
                 }
                 if ($nResults==0)
                 {
                     ?>
                         <tr>
-                <td id="noResult" colspan="5">There were no results for the name "<?php echo $_POST['name']?>". You could check the spelling, or try this name in other fields.</td>
+                <td id="noResult" colspan="5">There were no results for the title "<?php echo $_POST['title']?>". You could check the spelling, or try this name in other fields.</td>
                 </tr>
                     <?php
                 }
