@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Opera Omnia - Papers</title>
+    <title>Opera Omnia - Submit a paper</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <meta name="viewport" content="width=device-width"/>
@@ -60,7 +60,7 @@
                     </select>
                 <br /> 
                 <label for='authorID'><b>Select the author : </b></label>
-                    <select name="authorID"id = 'authorID' required>
+                    <select name="authorID" id = 'authorID' required>
                         <option selected ='selected' disabled value="" required>Choose an author ...</option>
                         <?php
                         try
@@ -74,6 +74,7 @@
                         }
 
                         $response = $bdd->query('SELECT * FROM authors ORDER BY LastName');
+                        
                         while ($data = $response->fetch())
                             {
                                 echo "<option value = ".$data['ID'].">".$data['FirstName']." ".$data['LastName']."</option>";
@@ -81,8 +82,63 @@
                         $response->closeCursor();
                         ?>
                         <option value="unspecified">Other</option>
-                        <!-- TODO : faire jaavscript qui affiche un menu ouy mettre m'auteur -->
-                    </select >
+                        </select >
+
+
+                        <fieldset id = 'addAuthor' style='width: 50%;'>
+                            <legend> If OperaOmnia does not have the author of the paper you want to submit, you may add it : </legend>
+                                <label class = 'submitPaper_content' for='fname'> <b>First Name :</b> </label> 
+                                <input size = "20"type='text' name='authorFname' id ='fname' />
+                                </br>
+                                <label class = 'submitPaper_content' for='lname'> <b>Last Name :</b> </label> 
+                                <input size = "20"type='text' name='authorLname' id ='lname' />
+                                </br>
+                                <label for='authorBirth'> <b>Date of Birthday :</b> </label>
+                                <input type="date" name="authorBirth" > 
+                                </br>
+                                <label for='authorDeath'> <b>Date of death :</b> </label>
+                                <input type="date" name="authorDeath" soze = '20' >
+                                </br>
+                                <label class = 'submitPaper_content' for='bio'> <b>Biography : </b> </label> 
+                                <input size = "50 "type='text' name='authorBio' id ='bio' />
+                                </br>
+                                <label for='authorField'><b>Field :</b></label>
+                                <select name="authorField" id = 'field' >
+                                    <option selected ='selected' disabled value="" >Choose a field ...</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                </select>
+                        </fieldset>
+                        <script>
+                        var list = document.getElementById('authorID');
+                        var addAuthor = document.getElementById('addAuthor');
+                         children = addAuthor.childNodes
+                        addAuthor.style.display = "none";
+                        list.addEventListener('change', function() {
+
+                            if (this.options[list.selectedIndex].value == 'unspecified')
+                                {
+                                    addAuthor.style.display = "block";
+                                for (var i = 0, c = children.length; i < c; i++) 
+                                    {
+                                        if (children[i].name != 'bio' && children[i].name != 'birth' && children[i].name != 'death') {
+                                            console.log(children[i].name);
+                                            children[i].required = true ;
+                                        }
+                                    }
+                                }
+                            else 
+                            {
+                                addAuthor.style.display = "none";
+                                for (var i = 0, c = addAuthor.childNodes.length; i < c; i++) 
+                                    {
+                                         
+                                        children[i].required = false ;
+                                    }
+                            }
+                        });
+                        </script>
                 <br />
                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />    
                     <label for="paper" id='labelPaper'>Paper (max: 10Mo) : <br/><strong> (must be in pdf format) </strong></label><br />
@@ -105,10 +161,10 @@
                         echo "<strong style='color: red';>There is no file or there has been an error</strong></br>";
                     }
                 }
-                
-                
+    
                 ?>
                 <input type="submit" value="Submit ! "name = 'submit' id="submitPaperButton" />
+                <p> Your submission will be accepted or not by the staff.</p>
                 </div>
         </form>
         </fieldset>        

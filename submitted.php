@@ -28,6 +28,21 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 			{
 					die('Error : '.$e->getMessage());
 			}
+			
+			if ($_POST['authorID'] == 'unspecified')
+			{
+				$_POST['authorID'] = 0;
+				$req = $db->prepare('INSERT INTO autsubmits(firstName, lastName, birthday, dateOfDeath, Bio, Field) 
+				VALUES(:firstName, :lastName, :birthday, :dateOfDeath, :Bio, :Field)');
+	   			$req->execute(array(
+				'firstName' => $_POST['authorFname'],
+				'lastName' => $_POST['authorLname'],
+				'birthday' => $_POST['authorBirth'],
+				'dateOfDeath' => $_POST['authorDeath'],
+				'Bio' => $_POST['authorBio'],
+				'Field' => $_POST['authorField']
+	   				));
+			}
 			$numSubmitted=0;
 			$reponse=$db->query('SELECT * FROM submits');
 			while ($data = $reponse->fetch())
@@ -50,11 +65,6 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 				'Field' => $_POST['field']
 			));
 
-			//$last_id = $db->prepare('SELECT ID FROM submits WHERE title = ?' );
-			//$last_id->execute(array($_POST['title']));
-			//$last_id = $last_id -> fetch();
-			
-			
 			move_uploaded_file($_FILES['paperSubmitted']['tmp_name'], 'submits/paper' .basename($numSubmitted) .'.pdf');
 
 			echo "<section> 
@@ -62,7 +72,7 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 						<p>You can now go back <a href='operaomnia.php'>home</a>. Or whatever, you do you...</p>
 					</section>
 				<div id='space'></div>";
-
+			
 		}
 		else
 		{

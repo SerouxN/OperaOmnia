@@ -822,3 +822,7 @@ h1 strong
     color: black;
     transform: translate(-50%, -50%);
   }
+
+#addAuthor *{
+    width: auto;
+}
