@@ -719,7 +719,6 @@ nav ul li a:hover {
     min-width: 100px;
     border-radius: 30px;
 }
-
 #versionListPhys th, td 
 {
     text-align: left;
@@ -775,6 +774,21 @@ nav ul li a:hover {
     background-color: #530a63;
     border: 1px solid #3d0849;
     color: white;
+}
+#versionListMaths tr:hover
+{
+    cursor: pointer;
+    background-color: rgb(226, 226, 226)
+}
+#versionListPhys tr:hover
+{
+    cursor: pointer;
+    background-color: rgb(226, 226, 226)
+}
+#versionListCpsci tr:hover
+{
+    cursor: pointer;
+    background-color: rgb(226, 226, 226)
 }
 #lastPaperLink
 {
