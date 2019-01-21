@@ -53,7 +53,7 @@
             }
             $reponse2->closeCursor();
         ?>
-        <title>Opera Omnia - <?php echo $data['Title']?></title>
+        <title><?php echo $title;?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta charset="utf-8"/>
         <script>
@@ -70,8 +70,13 @@
         <?php include("header.php"); ?>
         <section style="padding-left:50px; padding-right:50px;">
             <h1><strong><?php echo $title ?></strong><?php echo" by ". $AuthFirstName." ".$AuthLastName;?></h1>
+            <?php 
+            if(isset($description) && !empty($description))
+            {?>
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;Description</h2>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $description ?></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $description; ?></p>
+            <?php
+            }?>
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;Versions</h2>
             <?php
                 $numberOfVersions=0;
@@ -285,7 +290,7 @@
             }
             ?>
             <p><br/>File names displayed in bold correspond to versions of the papers made by <em>Opera Omnia</em>.</p>
-            <p>Click <a href='newVersion.php?id=<?php echo $_GET['id']?>'>here</a> if you want to add a version of this paper to <em>Opera Omnia</em>.</p>
+            <p>Click <a href='newVersion.php?id=<?php echo $_GET['id']?>' style="color:black;">here</a> if you want to add a version of this paper to <em>Opera Omnia</em>.</p>
         </section>
         <?php include("footer.php"); ?>
     </body>

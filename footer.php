@@ -1,7 +1,8 @@
 <div id="placeholder"></div>
 <footer>
-    <p>Opera Omnia - 2018<br/>
-    (Pre )^32 Alpha</p>
+    <p>Opera Omnia<br/>
+    <br/>
+    (Pre )^32 Alpha<br/>2018-2019</p>
     
     <div id="sources">
         <p>

@@ -65,17 +65,23 @@
                             if(file_exists('papers/thumb_'.$data['ID'].'.png'))
                             {
                             ?>
-                            
+
                         <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
                         <?php
                             }
                             else
-                            {?>
-                                <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</div></div></a></li>
+                            {
+                                if(strlen($data['Title'])>170)
+                                {?>
+                                <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont" style="font-size:14px;"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</div></div></a></li>
                             <?php
-                            }?>
-                        <?php
-                        }
+                            }
+                            else
+                            {?>
+                                <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</div></div></a></li> 
+                            <?php
+                            }
+                        }}
                         $reponse->closeCursor();
                         if ($numberOfPapers==0)
                         {

@@ -5,7 +5,7 @@
     <nav id="navbar" class="topnav">
         <ul style="list-style-type:none">
             <li><a href="index" id="home">Home</a></li>
-            <li><a href="papers">Papers</a></li>
+            <li><a href="papers.php">Papers</a></li>
             <li><a href="authors">Authors</a></li>
             <li><a href="submit" id="submit">Submit a Paper</a></li>
             <li class="icon"><a href="javascript:void(0);" onclick="dropdown()">&#9776;</a></li>
