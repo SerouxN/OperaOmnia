@@ -29,6 +29,7 @@ if ($_POST['decision'] == 'Accept')
 else 
 {
     $r = $db->query("DELETE FROM submitversion WHERE ID = '".$_POST['id']."'");
+    
     unlink($oldname);
 }
 function Redirect($url, $permanent = false)

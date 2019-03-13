@@ -61,7 +61,7 @@
                 <th>Name</th>
                 <th>Years</th>
                 <th class="biography">Bio</th>
-                <th>Field</th>
+                <th>Fields</th>
                 </tr>
             <?php
                 $chosenMethod='LastName';
@@ -73,7 +73,7 @@
                 }
                 try
                 {
-                    $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+                    $bdd = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
                     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }
                 catch(Exception $e)
@@ -137,24 +137,70 @@
                 $nResults=0;
                 while ($data = $reponse->fetch())
                 {
+                    $fieldList="";
+                    $temp="";
+                    for($i=0; $i<strlen($data['Fields']); $i++) 
+                    {
+                       // var_dump($data['Fields']);
+                        if($data['Fields'][$i]!='_')
+                        {
+                            $temp.=$data['Fields'][$i];
+                        }
+                        if($data['Fields'][$i]=='_' or $i==strlen($data['Fields'])-1)
+                        {
+                            if($temp==0)
+                            {
+                                $fieldList="Other";
+                            }
+                            else
+                            {
+                                if($temp==1)
+                                {
+                                    $fieldList.="Mathematics, ";
+                                }
+                                if($temp==2)
+                                {
+                                    $fieldList.="Physics, ";
+                                }
+                                if($temp==3)
+                                {
+                                    $fieldList.="Computer Science, ";
+                                }
+                                
+                            }
+                            $temp="";
+                        }
+                    }
+                    $fieldList=substr($fieldList, 0, -2);
                     $nResults=$nResults+1;
             ?>
                 <tr class='clickable-row' data-href='author.php?authid=<?php echo $data['ID']?>'>
                 <td id="authName"><?php echo $data['FirstName']; ?> <strong><?php echo $data['LastName']; ?></strong></td>
-                <td>(<?php echo date_format(date_create($data['Birthday']),"Y");?>-<?php if($data['DateOfDeath'] != NULL){echo date_format(date_create($data['DateOfDeath']),"Y");}else{echo "  ";} ?>)</td>
+                <td>(<?php echo date_format(date_create($data['DateBirth']),"Y");?>-<?php if($data['DateDeath'] != NULL){echo date_format(date_create($data['DateDeath']),"Y");}else{echo "  ";} ?>)</td>
                 <td id="bio"><?php echo substr($data['Bio'], 0, 100)?>...</td>
-                <td><?php echo $data['Field']?></td>
+                <td><?php echo $fieldList?></td>
                 </tr>
             <?php  
                 }
                 if ($nResults==0)
                 {
+                    if(isset($_POST['title']))
+                    {
                     ?>
                         <tr>
-                <td id="noResult" colspan="5">There were no results for the name "<?php echo $_POST['name']?>". You could check the spelling, or try this name in other fields.</td>
+                        <td id="noResult" colspan="5">There were no results for the name "<?php echo $_POST['name']?>". You could check the spelling, or try this name in other fields.</td>
                 </tr>
                     <?php
                 }
+                else
+                {
+                    ?>
+                        <tr>
+                <td id="noResult" colspan="5">No author was found.</td>
+                </tr>
+                    <?php
+                }
+            }
                 $reponse->closeCursor();
             ?>
             </table>

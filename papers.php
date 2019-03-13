@@ -70,7 +70,7 @@
                 }
                 try
                 {
-                    $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+                    $bdd = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
                     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }
                 catch(Exception $e)
@@ -133,12 +133,23 @@
                 }
                 if ($nResults==0)
                 {
+                    if(isset($_POST['title']))
+                    {
                     ?>
                         <tr>
                 <td id="noResult" colspan="5">There were no results for the title "<?php echo $_POST['title']?>". You could check the spelling, or try this name in other fields.</td>
                 </tr>
                     <?php
                 }
+                else
+                {
+                    ?>
+                        <tr>
+                <td id="noResult" colspan="5">No paper was found.</td>
+                </tr>
+                    <?php
+                }
+            }
                 $reponse->closeCursor();
             ?>
             </table>

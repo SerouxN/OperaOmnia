@@ -4,7 +4,7 @@
             <?php
             try
             {
-                $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+                $bdd = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(Exception $e)
@@ -17,7 +17,7 @@
                 $bio=$data['Bio'];
                 $name=$data['FirstName'] . " ". $data['LastName'];
                 $familyName=$data['LastName'];
-                if ($data['Field']=='Physics')
+                /*if ($data['Field']=='Physics')
                 {
                     $asideColor="asidePhys";
                 }
@@ -28,7 +28,7 @@
                 else
                 {
                     $asideColor="asidePhys";
-                }
+                }*/
             }
             $reponse->closeCursor();
         ?>
