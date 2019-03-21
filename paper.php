@@ -37,7 +37,7 @@
             {
                 $AuthFirstName=$data['FirstName'];
                 $AuthLastName=$data['LastName'];
-                $AuthField=$data['Field'];
+                $AuthField=$data['Fields'];
                 if ($AuthField=="Mathematics")
                 {
                     $field=0;

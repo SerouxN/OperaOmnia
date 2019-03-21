@@ -15,8 +15,9 @@
                 <th> Author (ID) </th>
                 <th> Title </th>
                 <th> Summary </th>
+                <th> Type </th>
                 <th> Language </th>
-                <th> Year </th>
+                <th> Date </th>
                 <th> Field </th>
                 <th> Decision </th>
             </tr>
@@ -37,20 +38,21 @@
         $resp = $db->query('SELECT * FROM submits');
         while ($data = $resp->fetch() )
         {
-            $r = $db->query("SELECT LastName FROM authors WHERE ID =".$data['AuthorID']."");
-            $autName = $r->fetch();
-            echo "<tr><td>".$data['AuthorID']." (".$autName[0].")</td><td>".$data['Title']."</td><td>".$data['Summary']."</td><td>"
-            .$data['Language']."</td><td>".$data['Year']."</td><td>".$data['Field']."</td>";
+            //$r = $db->query("SELECT LastName FROM authors WHERE ID =".$data['AuthorID']."");
+            //$autName = $r->fetch();
+            echo "<tr><td>".$data['AuthorID']."</td><td>".$data['Title']."</td><td>".$data['Summary']."</td><td>".$data['Type']."</td><td>"
+            .$data['Language']."</td><td>".$data['Date']."</td><td>".$data['Fields']."</td>";
             //bricolage puissance 189
             echo "<td> 
             <form action = 'papAdmissible.php' method='post'>
             <input type='hidden' name='id' value = '".$data['ID']."'/>
             <input type='hidden' name='authorID' value = '".$data['AuthorID']."'/>
             <input type='hidden' name='title' value = '".$data['Title']."'/>
-            <input type='hidden' name='summary' value = '".$data['Summary']."'/>
+            <input type='hidden' name='Summary' value = '".$data['Summary']."'/>
+            <input type='hidden' name='Type' value = '".$data['Type']."'/>
             <input type='hidden' name='Language' value = '".$data['Language']."'/>
-            <input type='hidden' name='year' value = '".$data['Year']."'/>
-            <input type='hidden' name='field' value = '".$data['Field']."'/>
+            <input type='hidden' name='date' value = '".$data['Date']."'/>
+            <input type='hidden' name='Fields' value = '".$data['Fields']."'/>
             <input type='submit' value= 'Accept' name = 'decision'  />
             <input type='submit' value= 'Decline' name = 'decision'  />
             </form>
@@ -83,6 +85,7 @@
             <form action = 'verAdmissible.php' method='post'>
             <input type='hidden' name='id' value = '".$data['ID']."'/>
             <input type='hidden' name='paperID' value = '".$data['paperID']."'/>
+            <input type='hidden' name='Type' value = '".$data['Type']."'/>
             <input type='hidden' name='Language' value = '".$data['Language']."'/>
             <input type='submit' value= 'Accept' name = 'decision'  />
             <input type='submit' value= 'Decline' name = 'decision'  />
@@ -119,12 +122,12 @@
             echo "<td> 
             <form action = 'autAdmissible.php' method='post'>
             <input type='hidden' name='id' value = '".$data['definitiveID']."'/>
-            <input type='hidden' name='fname' value = '".$data['FirstName']."'/>
-            <input type='hidden' name='lname' value = '".$data['LastName']."'/>
-            <input type='hidden' name='birth' value = '".$data['DateBirth']."'/>
-            <input type='hidden' name='death' value = '".$data['DateDeath']."'/>
+            <input type='hidden' name='FirstName' value = '".$data['FirstName']."'/>
+            <input type='hidden' name='LastName' value = '".$data['LastName']."'/>
+            <input type='hidden' name='DateBirth' value = '".$data['DateBirth']."'/>
+            <input type='hidden' name='DateDeath' value = '".$data['DateDeath']."'/>
             <input type='hidden' name='bio' value = '".$data['Bio']."'/>
-            <input type='hidden' name='field' value = '".$data['Fields']."'/>
+            <input type='hidden' name='Fields' value = '".$data['Fields']."'/>
             <input type='submit' value= 'Accept' name = 'decision'  />
             <input type='submit' value= 'Decline' name = 'decision'  />
             </form>

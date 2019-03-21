@@ -55,7 +55,7 @@
     <div style="overflow-x:auto;">
             <table id="authList" width="90%">
             <tr>
-                <th>Author</th>
+                <th>Authors</th>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Field</th>
@@ -120,17 +120,51 @@
             ?>
                 <tr class='clickable-row' data-href='paper.php?id=<?php echo $data['ID']?>'>
                     <?php
-                    $query2="SELECT * FROM authors WHERE ID=".$data['AuthorID'];
-                    $reponse1=$bdd->query($query2);
-                    $dataAuthor=$reponse1->fetch();
-                    $authName=$dataAuthor['FirstName']." <strong>".$dataAuthor['LastName']."</strong>";?>
-                    <td><?php echo $authName;?></td>
+                    if($data['Fields']==0)
+                    {
+                        $paperField='Other';
+                    }
+                    elseif ($data['Fields']==1) {
+                        $paperField='Mathematics';
+                    }
+                    elseif ($data['Fields']==2) {
+                        $paperField='Physics';
+                    }
+                    elseif ($data['Fields']==3) {
+                        $paperField='Computer Science';
+                    }
+                    $authList="";
+                    $authors=array();
+                    $currentID="";
+                    for($i=0;$i<=strlen($data['AuthorID']);$i++)
+                    {
+                        if(isset($data['AuthorID'][$i]) && $data['AuthorID'][$i]!="_")
+                        {
+                            $currentID.=$data['AuthorID'][$i];
+                        }
+                        else
+                        {
+                            array_push($authors,$currentID);
+                            $currentID="";
+                        }
+                    }
+                    foreach ($authors as $auth1)
+                    {
+                        $query2="SELECT * FROM authors WHERE ID=".$auth1;
+                        $reponse1=$bdd->query($query2);
+                        $dataAuthor=$reponse1->fetch();
+                        $authName=$dataAuthor['FirstName']." <strong>".$dataAuthor['LastName']."</strong>";
+                        $authList.=$authName.", ";
+                    }
+                    $authList=substr($authList, 0, -2);
+                    ?>
+                    <td><?php echo $authList;?></td>
                     <td id="authName"><?php echo $data['Title']?></td>
-                    <td><?php echo $data['Year']?></td>
-                    <td><?php echo $data['Field']?></td>
+                    <td><?php echo date_format(date_create($data['Date']),"Y");?></td>
+                    <td><?php echo $paperField?></td>
                 </tr>
             <?php
-                }
+            }
                 if ($nResults==0)
                 {
                     if(isset($_POST['title']))

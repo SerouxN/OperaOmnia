@@ -28,12 +28,12 @@ if ($_POST['decision'] == 'Accept')
     $req = $db->prepare('INSERT INTO authors(ID, FirstName, LastName, DateBirth, DateDeath, Bio, Fields) VALUES(:ID, :FirstName, :LastName, :DateBirth, :DateDeath, :Bio, :Fields)');
     $req->execute(array(
         'ID' => $ID,
-        'FirstName' => $_POST['fname'],
-        'LastName' => $_POST['lname'],
-        'DateBirth' => $_POST['birth'],
-        'DateDeath' => $_POST['death'],
+        'FirstName' => $_POST['FirstName'],
+        'LastName' => $_POST['LastName'],
+        'DateBirth' => $_POST['DateBirth'],
+        'DateDeath' => $_POST['DateDeath'],
         'Bio' => $_POST['bio'],
-        'Fields' => $_POST['field']));
+        'Fields' => $_POST['Fields']));
         $r = $db->query("DELETE FROM autsubmits WHERE definitiveID='".$_POST['id']."'");
 }
 else 
