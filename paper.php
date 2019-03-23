@@ -20,9 +20,10 @@
             {
                 $title=$data['Title'];
                 $description=$data['Description'];
-                $AuthID=$data['AuthorID'];
+                $authID=$data['AuthorID'];
                 $n++;
             }
+            $authsID = explode("_", $authID);
             if($n==0)
             {
                 function Redirect($url, $permanent = false)
@@ -32,26 +33,7 @@
                 }
                 Redirect('index.php', false);
             }
-            $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID='. $AuthID);
-            while ($data = $reponse2->fetch())
-            {
-                $AuthFirstName=$data['FirstName'];
-                $AuthLastName=$data['LastName'];
-                $AuthField=$data['Fields'];
-                if ($AuthField=="Mathematics")
-                {
-                    $field=0;
-                }
-                elseif ($AuthField=="Physics")
-                {
-                    $field=2;
-                }
-                else
-                {
-                    $field=1;
-                }
-            }
-            $reponse2->closeCursor();
+
         ?>
         <title><?php echo $title;?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -69,7 +51,40 @@
     <body>   
         <?php include("header.php"); ?>
         <section style="padding-left:50px; padding-right:50px;">
-            <h1><strong><?php echo $title ?></strong><?php echo" by ". $AuthFirstName." ".$AuthLastName;?></h1>
+            <?php $i = 0;
+            foreach($authsID as $authID)
+            {
+                
+                $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID='. $authID);
+                // faire boucle qui parcourt les auteurs et affiche 
+                while ($data = $reponse2->fetch())
+                {
+                    $AuthFirstName=$data['FirstName'];
+                    $AuthLastName=$data['LastName'];
+                    $AuthField=$data['Fields'];
+                    if ($AuthField=="Mathematics")
+                    {
+                        $field=0;
+                    }
+                    elseif ($AuthField=="Physics")
+                    {
+                        $field=2;
+                    }
+                    else
+                    {
+                        $field=1;
+                    }
+                }
+                $reponse2->closeCursor(); 
+                if ($i == 0) {
+                    $authors_title = " by ". $AuthFirstName." ".$AuthLastName ;
+                }
+                else {
+                    $authors_title .= "and ". $AuthFirstName." ".$AuthLastName;
+                }
+                $i += 1 ;
+            } ?>
+            <h1><strong><?php echo $title ?></strong><i><?php echo$authors_title;?></i>.</h1>
             <?php 
             if(isset($description) && !empty($description))
             {?>
