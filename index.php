@@ -51,18 +51,28 @@
           {
               die('Erreur : '.$e->getMessage());
           }        
-          $reponse = $bdd->query('SELECT * FROM papers ORDER BY ID DESC');
+          $reponse = $bdd->query('SELECT * FROM papers');
           echo ('<div class=\'lastPaper\'/>');
           while ($data = $reponse->fetch())
           {
-            $AuthID=$data['AuthorID'];
-            $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID= '.$AuthID);
-          while ($data2 = $reponse2->fetch())
-          {
-            $FirstName=$data2['FirstName'];
-            $LastName=$data2['LastName'];
-          }
-              echo ('<ul> <li class="lastPaper"> <a id="lastPaperLink" href=paper.php?id='.$data['ID'].'>'.$data['Title'].' by <strong>'.$FirstName.' '.$LastName.'</strong></a></li> </ul>');
+              $authID=$data['AuthorID'];
+              $authsID = explode("_", $authID);
+              $i = 0;
+            foreach($authsID as $a) 
+            {
+              $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID= '.$a);
+              while ($data2 = $reponse2->fetch())
+              {
+                  if ($i == 0) {
+                    $authors_title = " by ". $data2['FirstName']." ".$data2['LastName'] ;
+                }
+                  else {
+                      $authors_title .= "and ". $data2['FirstName']." ".$data2['LastName'];
+                  }
+                $i += 1 ;
+              }
+            }
+                echo ('<ul> <li class="lastPaper"> <a id="lastPaperLink" href=paper.php?id='.$data['ID'].'>'.$data['Title'].' <strong>'.$authors_title.'</strong></a></li> </ul>');
           }
           echo '</div>'
         ?>

@@ -56,7 +56,6 @@
             {
                 
                 $reponse2 = $bdd->query('SELECT * FROM authors WHERE ID='. $authID);
-                // faire boucle qui parcourt les auteurs et affiche 
                 while ($data = $reponse2->fetch())
                 {
                     $AuthFirstName=$data['FirstName'];
