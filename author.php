@@ -34,6 +34,8 @@
         ?>
         <title>Opera Omnia - <?php echo $familyName?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css"
+    href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
         <meta charset="utf-8"/>
     </head>
     <body>
@@ -50,38 +52,57 @@
                         
                         try
                         {
-                            $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+                            $bdd = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
                             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         }
                         catch(Exception $e)
                         {
                             die('Erreur : '.$e->getMessage());
                         }
-                        $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND  Format=0 ORDER BY Year, ID');
+                        $reponse = $bdd->query('SELECT * FROM papers WHERE /*AuthorID='.$_GET['authid'].' AND*/  Format=0 ORDER BY Date, ID');
+                        
                         $numberOfPapers=0;
                         while ($data = $reponse->fetch())
                         {
+                            $authors=array();
+                            $currentID="";
+                            for($i=0;$i<=strlen($data['AuthorID']);$i++)
+                            {
+                                if(isset($data['AuthorID'][$i]) && $data['AuthorID'][$i]!="_")
+                                {
+                                    $currentID.=$data['AuthorID'][$i];
+                                }
+                                else
+                                {
+                                    array_push($authors,$currentID);
+                                    $currentID="";
+                                }
+                            }
+                            foreach ($authors as $auth1)
+                            {
+                            if($_GET['authid']==$auth1)
+                            {
                             $numberOfPapers=$numberOfPapers+1;
                             if(file_exists('papers/thumb_'.$data['ID'].'.png'))
                             {
                             ?>
 
-                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
+                        <li><a title="<?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
                         <?php
                             }
                             else
                             {
                                 if(strlen($data['Title'])>170)
                                 {?>
-                                <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont" style="font-size:14px;"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</div></div></a></li>
+                                <li><a title="<?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont" style="font-size:14px;"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> <br/>(<?php echo date_format(date_create($data['Date']),"Y");?>)</div></div></a></li>
                             <?php
                             }
                             else
                             {?>
-                                <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo $data['Year']?>)</div></div></a></li> 
+                                <li><a title="<?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> <br/>(<?php echo date_format(date_create($data['Date']),"Y");?>)</div></div></a></li> 
                             <?php
                             }
-                        }}
+                        }}}}
                         $reponse->closeCursor();
                         if ($numberOfPapers==0)
                         {
@@ -94,22 +115,56 @@
                         
                         try
                         {
-                            $bdd = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+                            $bdd = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
                             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         }
                         catch(Exception $e)
                         {
                             die('Erreur : '.$e->getMessage());
                         }
-                        $reponse = $bdd->query('SELECT * FROM papers WHERE AuthorID='.$_GET['authid'].' AND  Format=1 ORDER BY Year, ID');
+                        $reponse = $bdd->query('SELECT * FROM papers WHERE /*AuthorID='.$_GET['authid'].' AND*/  Format=1 ORDER BY Date, ID');
                         $numberOfPapers=0;
                         while ($data = $reponse->fetch())
                         {
+                            $authors=array();
+                            $currentID="";
+                            for($i=0;$i<=strlen($data['AuthorID']);$i++)
+                            {
+                                if(isset($data['AuthorID'][$i]) && $data['AuthorID'][$i]!="_")
+                                {
+                                    $currentID.=$data['AuthorID'][$i];
+                                }
+                                else
+                                {
+                                    array_push($authors,$currentID);
+                                    $currentID="";
+                                }
+                            }
+                            foreach ($authors as $auth1)
+                            {
+                            if($_GET['authid']==$auth1)
+                            {
                             $numberOfPapers=$numberOfPapers+1;
+                            if(file_exists('papers/thumb_'.$data['ID'].'.png'))
+                            {
                             ?>
-                        <li><a title="<?php echo $data['Title']?> (<?php echo $data['Year']?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="203" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
+
+                        <li><a title="<?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)" href="paper.php?id=<?php echo $data['ID'];?>"><img width="232" height="300" src="papers/thumb_<?php echo $data['ID'];?>.png" /></a></li>
                         <?php
-                        }
+                            }
+                            else
+                            {
+                                if(strlen($data['Title'])>170)
+                                {?>
+                                <li><a title="<?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont" style="font-size:14px;"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)</div></div></a></li>
+                            <?php
+                            }
+                            else
+                            {?>
+                                <li><a title="<?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)" href="paper.php?id=<?php echo $data['ID'];?>"><div class="paperCont"><img width="232" height="300" src="papers/thumb_def.png"/><div class="textCont"><?php echo $data['Title']?> (<?php echo date_format(date_create($data['Date']),"Y");?>)</div></div></a></li> 
+                            <?php
+                            }
+                        }}}}
                         $reponse->closeCursor();
                         if ($numberOfPapers==0)
                         {

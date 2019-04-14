@@ -4,6 +4,8 @@
     <title>Opera Omnia</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css"
+    href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
 </head>
 <header>
 	<?php include("header.php"); ?>
