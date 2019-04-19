@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Opera Omnia - admission</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Opera Omnia - Admission</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
     <meta charset="utf-8"/>
 </head>
 <body>
-    <?php include("header.php"); ?>
+    <?php include("../header.php"); ?>
     <section>
         <h1>Admissons (staff only)</h1>
         <h3> New papers </h3>
@@ -138,6 +138,34 @@
         $_SESSION['paperID']=$data['id'];
         ?> </table>
    </section>
-    <?php include("footer.php"); ?>
+   <section>
+   <h3> Issues reported : </h3>
+   <table id='authList'>
+            <tr>
+                <th> ID </th>
+                <th> Type </th>
+                <th> Description </th>
+                <th> Screenshot </th>
+                <th> Seen </th> 
+            </tr>
+        <?php
+            $resp = $db->query('SELECT * FROM issues');
+            while ($data = $resp->fetch() )
+            {
+                if (isset($data['ID_pic']) && $data['ID_pic'] != 0)
+                {
+                    $bla = '<a href="../issues/issue'.$data['ID_pic'].'"> Link </a>';
+                }
+                else {
+                    $bla = 'None';
+                }
+                echo "<tr><td>".$data['ID']."</td><td>".$data['Type']."</td><td>".$data['Description']."</td><td>$bla</td></tr>";
+            }
+        ?>
+        </table>
+
+
+   </section>
+    <?php include("../footer.php"); ?>
 </body>
 </html>

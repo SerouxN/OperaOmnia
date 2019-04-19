@@ -10,8 +10,7 @@
 </header>
 <body>
 <?php
-//Verification du fichier 
-if ($_FILES['paperSubmitted']['error'] == 0)
+if (isset($_FILES['paperSubmitted']) && $_FILES['paperSubmitted']['error'] == 0)
 
 {
 	if ($_FILES['paperSubmitted']['size'] <= 10000000)
