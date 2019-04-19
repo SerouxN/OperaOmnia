@@ -55,7 +55,7 @@
                 <label for='type'><b>Type:</b></label>
                     <select name="type" id = 'type' required>
                         <option selected ='selected' disabled value="" >Choose the type of your file ...</option>
-                        <option value="1">Scan of the original publication</option>
+                        <option value="1">Original publication</option>
                         <option value="2">Later transcription</option>
                         <option value="3">Later translation</option>
                         <option value="0">Other</option>
@@ -69,6 +69,7 @@
                         <option value="3">French</option>
                         <option value="4">Latin</option>
                         <option value="4">Dutch</option>
+                        <option value="5">Portuguese</option>
                         <option value="0">Other language</option>
                     </select>
 

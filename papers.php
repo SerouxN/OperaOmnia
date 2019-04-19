@@ -40,8 +40,8 @@
                     <legend>Sort by:</legend>
                     <select name="sorting" size="1">
                         <option value="Title" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Title') {echo 'selected';} ?>>Title</option>
-                        <option value="Year" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Year') {echo 'selected';} ?>>Year Published</option>
-                        <option value="Field" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Field') {echo 'selected';} ?>>Field</option>
+                        <option value="Date" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Date') {echo 'selected';} ?>>Date Published</option>
+                        <option value="Fields" <?php if (isset($_POST['sorting']) && $_POST['sorting'] == 'Fields') {echo 'selected';} ?>>Field</option>
                     </select>
                     <div id="order">
                         <input type="radio" name="order" value=" " <?php if(isset($_POST['order']) && $_POST['order'] == " "){echo 'checked';}?> checked>Ascending<br>

@@ -105,8 +105,8 @@
                 else if (($numberOfVersions==1))
                 {
                     echo "There is only <strong>1</strong> version of this paper available on <em>Opera Omnia</em>.";?>
-                    <table width="90%" id=
-                    <?php 
+                    <table width="90%" id="versionListPhys">
+                    <?php/* 
                         if ($field==0)
                         {
                             echo "\"versionListMaths\"";
@@ -119,10 +119,11 @@
                         {
                             echo "\"versionListPhys\"";
                         }
-                    ?>>
+                    */?>
                         <tr>
                             <th>Title</th>
-                            <th>Version</th>
+                            <th>Language</th>
+                            <th>Type</th>
                         </tr>
                             <?php
                                 include 'PDFInfo.php';
@@ -162,23 +163,71 @@
                                         <td id="paperTitle"><?php echo $fileTitle ?></td>
                                     <?php
                                     }?>
-
-                            <td id="version"><?php 
-                                if ($version ==0)
+                            <td id="version">
+                            <?php
+                                $language="";
+                                $n=2;
+                                for($i=0;$i<strlen($filename);$i++)
                                 {
-                                    echo "Original Scan";
+                                    if($filename[$i]=="_")
+                                    {
+                                        $language.=$filename[$i+1];
+                                        $n=2;
+                                        while($filename[$i+$n]!="_")
+                                        {
+                                            $language.=$filename[$i+$n];
+                                            $n++;
+                                        }
+                                        
+                                    break;
+                                    }
+                                }
+                                
+                            if ($language == 0)
+                                {
+                                    echo "Other";
                                 }   
-                                elseif ($version ==1)
+                                elseif ($language ==1)
                                 {
                                     echo "English";
                                 }    
-                                elseif ($version==2)
+                                elseif ($language==2)
                                 {
                                     echo "German";
                                 } 
-                                elseif ($version ==3)
+                                elseif ($language ==3)
                                 {
                                     echo "French";
+                                } 
+                                elseif ($language ==4)
+                                {
+                                    echo "Latin";
+                                } 
+                                elseif ($language ==5)
+                                {
+                                    echo "Dutch";
+                                } 
+                                elseif ($language ==6)
+                                {
+                                    echo "Portuguese";
+                                } ?>
+                            </td>
+                            <td id="version"><?php 
+                                if ($version ==0)
+                                {
+                                    echo "Other";
+                                }   
+                                elseif ($version ==1)
+                                {
+                                    echo "Original Publication";
+                                }    
+                                elseif ($version==2)
+                                {
+                                    echo "Later Transcription";
+                                } 
+                                elseif ($version ==3)
+                                {
+                                    echo "Later Translation";
                                 } 
                                 elseif ($version ==4)
                                 {
