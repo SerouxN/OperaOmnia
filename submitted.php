@@ -74,11 +74,12 @@ if (isset($_FILES['paperSubmitted']) && $_FILES['paperSubmitted']['error'] == 0)
 					}
 				}
 				$numSubmitted=$numSubmitted+1;
-			 	$req = $db->prepare('INSERT INTO submits(ID,AuthorID, Title, Summary, Type, Language, Date, Fields) VALUES(:ID,:AuthorID, :Title, :Summary, :Type,  :Language, :Date, :Fields)');
+			 	$req = $db->prepare('INSERT INTO submits(ID,AuthorID, Title, FileTitle, Summary, Type, Language, Date, Fields) VALUES(:ID,:AuthorID, :Title, :FileTitle, :Summary, :Type,  :Language, :Date, :Fields)');
 				$req->execute(array(
 				'ID' => $numSubmitted,
 				'AuthorID' => $definitiveID,
-				'Title' => $_POST['title'],
+				'Title' => $_POST['originalTitle'],
+				'FileTitle'=>$_POST['fileTitle'],
 				'Summary' => $_POST['summary'],
 				'Type' => $_POST['type'],
 				'Language' => $_POST['language'],
@@ -105,11 +106,12 @@ if (isset($_FILES['paperSubmitted']) && $_FILES['paperSubmitted']['error'] == 0)
 				}
 				$numSubmitted=$numSubmitted+1;
 
-			 	$req = $db->prepare('INSERT INTO submits(ID,AuthorID, Title, Summary, Type, Language, Date, Fields) VALUES(:ID,:AuthorID, :Title, :Summary, :Type, :Language, :Date, :Fields)');
+				$req = $db->prepare('INSERT INTO submits(ID,AuthorID, Title, FileTitle, Summary, Type, Language, Date, Fields) VALUES(:ID,:AuthorID, :Title, :FileTitle, :Summary, :Type,  :Language, :Date, :Fields)');
 				$req->execute(array(
 				'ID' => $numSubmitted,
 				'AuthorID' => $authorlist,
-				'Title' => $_POST['title'],
+				'Title' => $_POST['originalTitle'],
+				'FileTitle'=>$_POST['fileTitle'],
 				'Summary' => $_POST['summary'],
 				'Type' => $_POST['type'],
 				'Language' => $_POST['language'],

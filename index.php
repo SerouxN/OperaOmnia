@@ -7,9 +7,7 @@
     <meta charset="utf-8"/>
   </head>
   <body class='home'>
-    <header>
-      <?php include("header.php"); ?>
-    </header>
+    <?php include("header.php"); ?>
     <div class="slideshow-container">
       <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
@@ -74,7 +72,9 @@
             }
                 echo ('<ul> <li class="lastPaper"> <a id="lastPaperLink" href=paper.php?id='.$data['ID'].'>'.$data['Title'].' <strong>'.$authors_title.'</strong></a></li> </ul>');
           }
-          echo '</div>'
+          echo '</div>';
+        //phpinfo();
+        //$pdf = pdf_new();
         ?>
       </div>
     </section>

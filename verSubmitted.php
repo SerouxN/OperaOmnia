@@ -21,7 +21,7 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 		{			
 			try
 			{
-				$db = new PDO('mysql:host=localhost;dbname=opera omnia;charset=utf8', 'root', '');
+				$db = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
 
@@ -39,12 +39,15 @@ if ($_FILES['paperSubmitted']['error'] == 0)
 				}
 			}
 			$numSubmitted=$numSubmitted+1;
-			 $req = $db->prepare('INSERT INTO submitversion(ID, paperID, Language) 
-			 		VALUES(:ID, :paperID, :Language)');
+			 $req = $db->prepare('INSERT INTO submitversion(ID, FileTitle, paperID, Type, Language) 
+			 		VALUES(:ID, :FileTitle, :paperID, :Type, :Language)');
 			$req->execute(array(
-                'ID' => $numSubmitted,
-                'paperID' => $_SESSION['paperID'],
-				'Language' => $_POST['language']
+				'ID' => $numSubmitted,
+				'FileTitle'=>$_POST['fileTitle'],
+				'paperID' => $_SESSION['paperID'],
+				'Type'=>$_POST['type'],
+				'Language' => $_POST['language'],
+
 			));
 
 			//$last_id = $db->prepare('SELECT ID FROM submits WHERE title = ?' );

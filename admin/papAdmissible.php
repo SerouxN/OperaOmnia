@@ -1,4 +1,10 @@
 <?php
+
+require_once('../FPDF/fpdf.php');
+require_once('../FPDF/src/autoload.php');
+
+use \setasign\Fpdi\Fpdi;
+
 try
 {
     $db = new PDO('mysql:host=localhost;dbname=operaomnia v2;charset=utf8', 'root', '');
@@ -10,17 +16,18 @@ catch(Exception $e)
         die('Error : '.$e->getMessage());
 }
 
+
 $r = $db->prepare('SELECT * FROM submits WHERE ID = "'.$_POST['id'].'"');
-$r->execute(array($_POST['title']));
+$r->execute(array($_POST['originalTitle']));
 $oldname = $r->fetch();
 $data=$r->fetch();
 var_dump($data);
-$oldname = 'submits/paper'.$oldname[0].'.pdf';
+$oldname = '../submits/paper'.$oldname[0].'.pdf';
 
 if ($_POST['decision'] == 'Accept')
 {
     $usedIDs = $db->query('SELECT ID FROM papers');
-    $ID=sprintf('%010d', rand(0,9999999999));
+    $ID=sprintf('%010d', rand(0,(int)9999999999));
     while ($usedID = $usedIDs->fetch())
     {
         if ($usedID==$ID)
@@ -35,21 +42,31 @@ if ($_POST['decision'] == 'Accept')
     $req->execute(array(
         'ID'=>$ID,
         'AuthorID' => $_POST['authorID'],
-        'Title' => $_POST['title'],
+        'Title' => $_POST['originalTitle'],
         'Date' => $_POST['date'],
         'Description' => $_POST['Summary'],
         'Fields' => $_POST['Fields'],
         'Format'=>0));
     $char=['b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-    $newname = 'papers/'.$ID.'_'.strval($_POST['Language']).'_'.strval($_POST['Type']).'a.pdf';
+    $newname = '../papers/'.$ID.'_'.strval($_POST['Language']).'_'.strval($_POST['Type']).'a.pdf';
     $i=0;
     while(file_exists($newname))
     {
-        $newname = 'papers/'.$ID.'_'.strval($_POST['Language']).'_'.strval($_POST['Type']).'.pdf';
+        $newname = '../papers/'.$ID.'_'.strval($_POST['Language']).'_'.strval($_POST['Type']).'.pdf';
         $i++;
     }
     var_dump($oldname);
-    rename($oldname, $newname);
+    $finalFile = new FPDI();
+
+        $pageCount = $finalFile->setSourceFile($oldname);
+        for ($i = 1; $i <= $pageCount; $i++) {
+            $tplIdx = $finalFile->importPage($i, '/MediaBox');
+            $finalFile->AddPage();
+            $finalFile->useTemplate($tplIdx);
+        }
+        $finalFile->SetTitle($_POST['fileTitle']);
+        $finalFile->Output($newname, "F");
+    //rename($oldname, $newname);
      
     $authors=array();
     $authExists="False";
@@ -94,7 +111,7 @@ if ($_POST['decision'] == 'Accept')
     }
     var_dump($data);
  
-   $r = $db->query("DELETE FROM submits WHERE Title = '".$_POST['title']."'");
+   $r = $db->query("DELETE FROM submits WHERE Title = '".$_POST['originalTitle']."'");
 }
 else 
 {

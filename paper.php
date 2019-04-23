@@ -137,6 +137,17 @@
                                     if($fileTitle=="Untitled" || strlen($fileTitle)==0)
                                     {
                                         $fileTitle=$title;
+                                         $stringedPDF = file_get_contents($filename, true);
+                                        preg_match('/(?<=Title )\S(?:(?<=\().+?(?=\))|(?<=\[).+?(?=\]))./', $stringedPDF, $title2);
+                                        $fileTitle = $title2[0];
+                                        if($fileTitle=="Untitled" || strlen($fileTitle)==0)
+                                        {
+                                            $fileTitle=$title;
+                                        }
+                                    }
+                                    if($fileTitle[0]=='(' && $fileTitle[strlen($fileTitle)-1]==')')
+                                    {
+                                        $fileTitle=substr($fileTitle,1,-1);
                                     }
                                     $version=substr($filename, -5, 1);
                                     if(is_numeric($version)==false)

@@ -26,9 +26,9 @@
             <label for='type'  required> <b>Object  : </b> </label>
             <select name="type" required >
             <option selected='selected' disabled value="" >Select an object ... </option>
-            <option value="bug" <?php if  (isset($_GET['selected']) && $_GET['selected'] == 'bug') {echo("selected=''");}?> >I saw a bug </option>
-            <option value="suggestion" >I've a suggestion ! </option>
-            <option value="hack">I succeed in hacking into your site, can I get a reward ? </option>
+            <option value="bug" <?php if  (isset($_GET['selected']) && $_GET['selected'] == 'bug') {echo("selected=''");}?> >I found a bug </option>
+            <option value="suggestion" >I have a suggestion</option>
+            <option value="hack">I succeeded in hacking into your site, can I get a reward? </option>
             <option value="other">Other ..</option>
             </select>
             <br />

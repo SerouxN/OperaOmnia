@@ -2,7 +2,7 @@
 <footer>
     <p>Opera Omnia<br/>
     <br/>
-    (Pre )^32 Alpha<br/>2018-2019. <br/>You saw a bug ? <a href="report_issue.php?selected=bug">Tell us </a></p>
+    (Pre )^32 Alpha<br/>2018-2019. <br/><br/>Found a bug? Report it <a href="report_issue.php?selected=bug">here</a>.</p>
     
     <div id="sources">
         <p>

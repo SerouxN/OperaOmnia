@@ -6,14 +6,15 @@
     <meta charset="utf-8"/>
 </head>
 <body>
-    <?php include("../header.php"); ?>
+    <?php include("../headerAdmin.php"); ?>
     <section>
         <h1>Admissons (staff only)</h1>
         <h3> New papers </h3>
         <table id = 'authList'> 
             <tr>
                 <th> Author (ID) </th>
-                <th> Title </th>
+                <th> Original Title </th>
+                <th> Title of the File</th>
                 <th> Summary </th>
                 <th> Type </th>
                 <th> Language </th>
@@ -40,14 +41,15 @@
         {
             //$r = $db->query("SELECT LastName FROM authors WHERE ID =".$data['AuthorID']."");
             //$autName = $r->fetch();
-            echo "<tr><td>".$data['AuthorID']."</td><td>".$data['Title']."</td><td>".$data['Summary']."</td><td>".$data['Type']."</td><td>"
+            echo "<tr><td>".$data['AuthorID']."</td><td>".$data['Title']."</td><td>".$data['FileTitle']."</td><td>".$data['Summary']."</td><td>".$data['Type']."</td><td>"
             .$data['Language']."</td><td>".$data['Date']."</td><td>".$data['Fields']."</td>";
             //bricolage puissance 189
             echo "<td> 
             <form action = 'papAdmissible.php' method='post'>
             <input type='hidden' name='id' value = '".$data['ID']."'/>
             <input type='hidden' name='authorID' value = '".$data['AuthorID']."'/>
-            <input type='hidden' name='title' value = '".$data['Title']."'/>
+            <input type='hidden' name='originalTitle' value = '".$data['Title']."'/>
+            <input type='hidden' name='fileTitle' value = '".$data['FileTitle']."'/>
             <input type='hidden' name='Summary' value = '".$data['Summary']."'/>
             <input type='hidden' name='Type' value = '".$data['Type']."'/>
             <input type='hidden' name='Language' value = '".$data['Language']."'/>
@@ -84,9 +86,10 @@
             echo "<td> 
             <form action = 'verAdmissible.php' method='post'>
             <input type='hidden' name='id' value = '".$data['ID']."'/>
+            <input type='hidden' name='fileTitle' value = '".$data['FileTitle']."'/>
             <input type='hidden' name='paperID' value = '".$data['paperID']."'/>
-            <input type='hidden' name='Type' value = '".$data['Type']."'/>
-            <input type='hidden' name='Language' value = '".$data['Language']."'/>
+            <input type='hidden' name='type' value = '".$data['Type']."'/>
+            <input type='hidden' name='language' value = '".$data['Language']."'/>
             <input type='submit' value= 'Accept' name = 'decision'  />
             <input type='submit' value= 'Decline' name = 'decision'  />
             </form>

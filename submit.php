@@ -24,8 +24,9 @@
         <legend> Submit a paper </legend>
         <form action="submitted.php" enctype="multipart/form-data" method="post">
             <div>
-                <label class = 'submitPaper_content' for='title' title='The original title of the paper, in its original language'><b>Title :</b> </label>
-                <input size = "4" type='text' name='title' id ='title' required/>
+                <label class = 'submitPaper_content' for='fileTitle' title='The title of the file you submitted'><b>Title :</b> </label><input size = "4" type='text' name='fileTitle' id ='fileTitle' required/><br/>
+                <label class = 'submitPaper_content' for='originalTitle' title='The original title of the paper, in its original language'><b>Orginal Title :</b> </label>
+                <input size = "4" type='text' name='originalTitle' id ='originalTitle' required/>
                 <br/>
                     <label for='date'> <b>Date of publication :</b> </label>
                     <!--<select name="date" required>
@@ -52,7 +53,7 @@
                         <option value="0">Other</option>
                     </select>
                 <br />  
-                <label for='type'><b>Type:</b></label>
+                <label for='type'><b>Type :</b></label>
                     <select name="type" id = 'type' required>
                         <option selected ='selected' disabled value="" >Choose the type of your file ...</option>
                         <option value="1">Original publication</option>
